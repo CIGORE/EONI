@@ -1,719 +1,1196 @@
 <!DOCTYPE html>
 <html lang="id" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EONI - Indonesian Cultural Clothing</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTAwIDEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSI0NSIgZmlsbD0iI2YzZjRmMCIgc3Ryb2tlPSIjMmQ2YTUzIiBzdHJva2Utd2lkdGg9IjgiLz48cGF0aCBkPSJNNTAsMjUgQzU1LDM1IDY1LDQwIDUwLDYwIEMzNSw0MCA0NSwzNSA1MCwyNVoiIGZpbGw9IiMyZDZhNTMiLz48cGF0aCBkPSJNMzAsNDUgQzQwLDU1IDM1LDcwIDMwLDc1IEMyNSw2NSAyNSw1NSAzMCw0NVoiIGZpbGw9IiMyZDZhNTMiLz48cGF0aCBkPSJNNzAsNDUgQzYwLDU1IDY1LDcwIDcwLDc1IEM3NSw2NSA3NSw1NSA3MCw0NVoiIGZpbGw9IiMyZDZhNTMiLz48L3N2Zz4=">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        'eoni-green': '#2A6652',
-                        'eoni-cream': '#FFF8E1',
-                        'eoni-dark': '#1A1A1A',
-                        'eoni-light-dark': '#2A2A2A',
-                    },
-                    fontFamily: {
-                        'sans': ['Inter', 'sans-serif'],
-                    }
-                }
-            }
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>EONI - Indonesian Cultural Clothing</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link
+    rel="icon"
+    type="image/svg+xml"
+    href="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTAwIDEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSI0NSIgZmlsbD0iI2YzZjRmMCIgc3Ryb2tlPSIjMmQ2YTUzIiBzdHJva2Utd2lkdGg9IjgiLz48cGF0aCBkPSJNNTAsMjUgQzU1LDM1IDY1LDQwIDUwLDYwIEMzNSw0MCA0NSwzNSA1MCwyNVoiIGZpbGw9IiMyZDZhNTMiLz48cGF0aCBkPSJNNzAsNDUgQzYwLDU1IDY1LDcwIDcwLDc1IEM3NSw2NSA3NSw1NSA3MCw0NVoiIGZpbGw9IiMyZDZhNTMiLz48L3N2Zz4="
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  />
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "eoni-green": "#2A6652",
+            "eoni-cream": "#FFF8E1",
+            "eoni-dark": "#1A1A1A",
+            "eoni-light-dark": "#2A2A2A",
+          },
+          fontFamily: {
+            sans: ["Inter", "sans-serif"],
+          },
+        },
+      },
+    };
 
-        // Check for dark mode preference
-        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-            document.documentElement.classList.add('dark');
+    if (
+      window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches
+    ) {
+      document.documentElement.classList.add("dark");
+    }
+    window
+      .matchMedia("(prefers-color-scheme: dark)")
+      .addEventListener("change", (event) => {
+        if (event.matches) {
+          document.documentElement.classList.add("dark");
+        } else {
+          document.documentElement.classList.remove("dark");
         }
-        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
-            if (event.matches) {
-                document.documentElement.classList.add('dark');
-            } else {
-                document.documentElement.classList.remove('dark');
-            }
-        });
-    </script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+      });
+  </script>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
 
-        html {
-            scroll-behavior: smooth;
-        }
+    html {
+      scroll-behavior: smooth;
+    }
 
-        .product-card:hover .product-actions {
-            opacity: 1;
-        }
+    .product-card:hover .product-actions {
+      opacity: 1;
+    }
 
-        .scroll-to-top {
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-        }
+    .scroll-to-top {
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
 
-        .scroll-to-top.visible {
-            opacity: 1;
-            visibility: visible;
-        }
+    .scroll-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+    }
 
-        /* Animation for hero section */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+    /* Animation for hero section */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
 
-        .animate-fade-in {
-            animation: fadeIn 0.8s ease forwards;
-        }
+    .animate-fade-in {
+      animation: fadeIn 0.8s ease forwards;
+    }
 
-        .animate-fade-in-delay-1 {
-            animation: fadeIn 0.8s ease 0.2s forwards;
-            opacity: 0;
-        }
+    .animate-fade-in-delay-1 {
+      animation: fadeIn 0.8s ease 0.2s forwards;
+      opacity: 0;
+    }
 
-        .animate-fade-in-delay-2 {
-            animation: fadeIn 0.8s ease 0.4s forwards;
-            opacity: 0;
-        }
-    </style>
+    .animate-fade-in-delay-2 {
+      animation: fadeIn 0.8s ease 0.4s forwards;
+      opacity: 0;
+    }
+
+    /* Modal overlay */
+    .modal-overlay {
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+  </style>
 </head>
-<body class="font-sans bg-eoni-cream dark:bg-eoni-dark text-gray-800 dark:text-gray-200 transition-colors duration-300">
-    <!-- Header/Navigation -->
-    <header class="sticky top-0 z-50 bg-eoni-cream/90 dark:bg-eoni-dark/90 backdrop-blur-md shadow-sm transition-all duration-300">
-        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-            <div class="flex items-center gap-2">
-                <div class="w-20 h-20">
-                    <img src="https://cigore.github.io/eoni/eoni-transp.png" alt="EONI Logo" class="w-full h-full rounded-lg">
-                </div>
-            </div>
-            
-            <div class="hidden md:flex items-center space-x-6">
-                <a href="#home" class="text-gray-700 dark:text-gray-300 hover:text-eoni-green dark:hover:text-white font-medium">Beranda</a>
-                <a href="#about" class="text-gray-700 dark:text-gray-300 hover:text-eoni-green dark:hover:text-white font-medium">Tentang</a>
-                <a href="#products" class="text-gray-700 dark:text-gray-300 hover:text-eoni-green dark:hover:text-white font-medium">Produk</a>
-                <a href="#contact" class="text-gray-700 dark:text-gray-300 hover:text-eoni-green dark:hover:text-white font-medium">Kontak</a>
-            </div>
-            
-            <div class="flex items-center gap-3">
-                <button id="darkModeToggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
-                    <i class="fas fa-moon dark:hidden text-eoni-green"></i>
-                    <i class="fas fa-sun hidden dark:block text-yellow-400"></i>
-                </button>
-                
-                <button id="mobileMenuBtn" class="md:hidden p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
-                    <i class="fas fa-bars text-eoni-green dark:text-white"></i>
-                </button>
-            </div>
+<body
+  class="font-sans bg-eoni-cream dark:bg-eoni-dark text-gray-800 dark:text-gray-200 transition-colors duration-300"
+>
+  <!-- Header/Navigation -->
+  <header
+    class="sticky top-0 z-50 bg-eoni-cream/90 dark:bg-eoni-dark/90 backdrop-blur-md shadow-sm transition-all duration-300"
+  >
+    <div
+      class="container mx-auto px-4 py-3 flex justify-between items-center"
+    >
+      <div class="flex items-center gap-2">
+        <div class="w-20 h-20">
+          <img
+            src="https://cigore.github.io/eoni/eoni-transp.png"
+            alt="EONI Logo"
+            class="w-full h-full rounded-lg"
+          />
         </div>
-        
-        <!-- Mobile menu (hidden by default) -->
-        <div id="mobileMenu" class="md:hidden hidden bg-white dark:bg-eoni-light-dark shadow-md absolute left-0 right-0 transition-all duration-300">
-            <div class="container mx-auto px-4 py-3 flex flex-col space-y-3">
-                <a href="#home" class="py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg">Beranda</a>
-                <a href="#about" class="py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg">Tentang</a>
-                <a href="#products" class="py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg">Produk</a>
-                <a href="#contact" class="py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg">Kontak</a>
-            </div>
-        </div>
-    </header>
+      </div>
 
-    <!-- Hero Section -->
-    <section id="home" class="relative overflow-hidden bg-eoni-cream dark:bg-eoni-dark py-16 md:py-24">
-        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
-            <div class="md:w-1/2 mb-10 md:mb-0 animate-fade-in">
-                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-eoni-green dark:text-white">
-                    EONI
-                </h1>
-                <h2 class="text-2xl md:text-3xl font-medium mb-6 text-gray-700 dark:text-gray-300">
-                    Budaya Indonesia dalam Mode Modern
-                </h2>
-                <p class="text-lg text-gray-600 dark:text-gray-400 mb-8 max-w-lg">
-                    Koleksi pakaian premium yang terinspirasi dari kekayaan budaya Indonesia, 
-                    dirancang untuk generasi yang menghargai akar tradisi dengan sentuhan kontemporer.
-                </p>
-                <div class="flex space-x-4">
-                    <a href="#products" class="bg-eoni-green hover:bg-eoni-green/90 text-white px-6 py-3 rounded-lg font-medium transition-all shadow-lg hover:shadow-xl">
-                        Lihat Koleksi
-                    </a>
-                    <a href="#contact" class="border-2 border-eoni-green text-eoni-green dark:text-white hover:bg-eoni-green/10 px-6 py-3 rounded-lg font-medium transition-all">
-                        Hubungi Kami
-                    </a>
-                </div>
-            </div>
-            <div class="md:w-1/2 flex justify-center animate-fade-in-delay-1">
-                <div class="relative w-full max-w-md rounded-lg overflow-hidden shadow-xl">
-                    <img src="https://cigore.github.io/eoni/katalog-4.png" alt="EONI Collection" class="w-full h-auto object-contain">
-                </div>
-            </div>
-        </div>
-        
-        <!-- Decorative elements -->
-        <div class="absolute -bottom-16 -right-16 w-64 h-64 bg-eoni-green/10 dark:bg-eoni-green/5 rounded-full blur-3xl"></div>
-        <div class="absolute -top-32 -left-32 w-96 h-96 bg-eoni-green/10 dark:bg-eoni-green/5 rounded-full blur-3xl"></div>
-    </section>
+      <div class="hidden md:flex items-center space-x-6">
+        <a
+          href="#home"
+          class="text-gray-700 dark:text-gray-300 hover:text-eoni-green dark:hover:text-white font-medium"
+          >Beranda</a
+        >
+        <a
+          href="#about"
+          class="text-gray-700 dark:text-gray-300 hover:text-eoni-green dark:hover:text-white font-medium"
+          >Tentang</a
+        >
+        <a
+          href="#products"
+          class="text-gray-700 dark:text-gray-300 hover:text-eoni-green dark:hover:text-white font-medium"
+          >Produk</a
+        >
+        <a
+          href="#contact"
+          class="text-gray-700 dark:text-gray-300 hover:text-eoni-green dark:hover:text-white font-medium"
+          >Kontak</a
+        >
+      </div>
 
-    <!-- About Section -->
-    <section id="about" class="py-16 bg-white dark:bg-eoni-light-dark">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold text-eoni-green dark:text-white mb-4">Tentang EONI</h2>
-                <div class="w-20 h-1 bg-eoni-green mx-auto mb-6"></div>
-                <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-                    Menggabungkan keindahan budaya lokal Indonesia dengan desain modern untuk menciptakan pakaian yang tidak hanya stylish tetapi juga bermakna.
-                </p>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-eoni-cream dark:bg-eoni-dark rounded-xl p-6 shadow-md hover:shadow-lg transition-all">
-                    <div class="w-14 h-14 bg-eoni-green/20 rounded-full flex items-center justify-center mb-4">
-                        <i class="fas fa-leaf text-eoni-green text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-3 text-eoni-green dark:text-white">Kearifan Lokal</h3>
-                    <p class="text-gray-600 dark:text-gray-400">
-                        Setiap desain kami terinspirasi dari keberagaman budaya Indonesia yang kaya, mempromosikan dan melestarikan warisan budaya kita.
-                    </p>
-                </div>
-                
-                <div class="bg-eoni-cream dark:bg-eoni-dark rounded-xl p-6 shadow-md hover:shadow-lg transition-all">
-                    <div class="w-14 h-14 bg-eoni-green/20 rounded-full flex items-center justify-center mb-4">
-                        <i class="fas fa-tshirt text-eoni-green text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-3 text-eoni-green dark:text-white">Kualitas Premium</h3>
-                    <p class="text-gray-600 dark:text-gray-400">
-                        Kami menggunakan bahan berkualitas tinggi dan proses produksi yang teliti untuk memastikan setiap produk EONI nyaman dan tahan lama.
-                    </p>
-                </div>
-                
-                <div class="bg-eoni-cream dark:bg-eoni-dark rounded-xl p-6 shadow-md hover:shadow-lg transition-all">
-                    <div class="w-14 h-14 bg-eoni-green/20 rounded-full flex items-center justify-center mb-4">
-                        <i class="fas fa-heart text-eoni-green text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-3 text-eoni-green dark:text-white">Berkelanjutan</h3>
-                    <p class="text-gray-600 dark:text-gray-400">
-                        Berkomitmen untuk praktik bisnis yang bertanggung jawab, mendukung pengrajin lokal dan mengurangi dampak lingkungan.
-                    </p>
-                </div>
-            </div>
-            
-            <div class="mt-16 bg-eoni-cream dark:bg-eoni-dark rounded-xl p-8 shadow-lg">
-                <div class="flex flex-col md:flex-row items-center">
-                  <div class="md:w-3/5 mb-8 md:mb-0 md:pr-8">
-                    <div class="aspect-[4/3] w-full max-w-none mx-auto bg-gray-200 dark:bg-gray-700 rounded-lg overflow-hidden relative">
-                      <img 
-                        src="https://cigore.github.io/eoni/tim4.png" 
-                        alt="Foto Tim EONI" 
-                        class="w-full h-full object-cover transition-transform duration-300"
-                        loading="lazy"
-                      />
-                    </div>
-                  </div>
-                  <div class="md:w-2/5">
-                    <h3 class="text-2xl font-bold mb-4 text-eoni-green dark:text-white">Cerita Kami</h3>
-                    <p class="text-gray-600 dark:text-gray-400 mb-4">
-                      EONI lahir dari kecintaan terhadap keberagaman budaya Indonesia yang kaya. Kami percaya bahwa warisan budaya Indonesia memiliki nilai estetika yang tinggi dan cerita yang mendalam, yang layak untuk diangkat ke dalam desain modern.
-                    </p>
-                    <p class="text-gray-600 dark:text-gray-400 mb-4">
-                      Setiap koleksi kami mewakili kekayaan motif, warna, dan filosofi dari berbagai daerah di Indonesia. Dengan sentuhan desain kontemporer, kami menciptakan pakaian yang tidak hanya stylish tetapi juga menjadi media untuk menceritakan keindahan budaya Indonesia.
-                    </p>
-                    <div class="flex space-x-4 mt-6">
-                      <a href="#products" class="bg-eoni-green hover:bg-eoni-green/90 text-white px-5 py-2 rounded-lg font-medium transition-all">
-                        Produk Kami
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-        </div>
-    </section>
+      <div class="flex items-center gap-3">
+        <button
+          id="darkModeToggle"
+          class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+        >
+          <i class="fas fa-moon dark:hidden text-eoni-green"></i>
+          <i class="fas fa-sun hidden dark:block text-yellow-400"></i>
+        </button>
 
-    <!-- Products Section -->
-    <section id="products" class="py-16 bg-eoni-cream dark:bg-eoni-dark">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold text-eoni-green dark:text-white mb-4">Koleksi Kami</h2>
-                <div class="w-20 h-1 bg-eoni-green mx-auto mb-6"></div>
-                <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-                    Jelajahi koleksi pakaian kami yang terinspirasi dari berbagai budaya Indonesia. Desain eksklusif dengan kualitas premium.
-                </p>
+        <button
+          id="mobileMenuBtn"
+          class="md:hidden p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+        >
+          <i class="fas fa-bars text-eoni-green dark:text-white"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile menu (hidden by default) -->
+    <div
+      id="mobileMenu"
+      class="md:hidden hidden bg-white dark:bg-eoni-light-dark shadow-md absolute left-0 right-0 transition-all duration-300"
+    >
+      <div class="container mx-auto px-4 py-3 flex flex-col space-y-3">
+        <a
+          href="#home"
+          class="py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg"
+          >Beranda</a
+        >
+        <a
+          href="#about"
+          class="py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg"
+          >Tentang</a
+        >
+        <a
+          href="#products"
+          class="py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg"
+          >Produk</a
+        >
+        <a
+          href="#contact"
+          class="py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg"
+          >Kontak</a
+        >
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section
+    id="home"
+    class="relative overflow-hidden bg-eoni-cream dark:bg-eoni-dark py-16 md:py-24"
+  >
+    <div
+      class="container mx-auto px-4 flex flex-col md:flex-row items-center"
+    >
+      <div class="md:w-1/2 mb-10 md:mb-0 animate-fade-in">
+        <h1
+          class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-eoni-green dark:text-white"
+        >
+          EONI
+        </h1>
+        <h2
+          class="text-2xl md:text-3xl font-medium mb-6 text-gray-700 dark:text-gray-300"
+        >
+          Budaya Indonesia dalam Mode Modern
+        </h2>
+        <p class="text-lg text-gray-600 dark:text-gray-400 mb-8 max-w-lg">
+          Koleksi pakaian premium yang terinspirasi dari kekayaan budaya Indonesia,
+          dirancang untuk generasi yang menghargai akar tradisi dengan sentuhan kontemporer.
+        </p>
+        <div class="flex space-x-4">
+          <a
+            href="#products"
+            class="bg-eoni-green hover:bg-eoni-green/90 text-white px-6 py-3 rounded-lg font-medium transition-all shadow-lg hover:shadow-xl"
+            >Lihat Koleksi</a
+          >
+          <a
+            href="#contact"
+            class="border-2 border-eoni-green text-eoni-green dark:text-white hover:bg-eoni-green/10 px-6 py-3 rounded-lg font-medium transition-all"
+            >Hubungi Kami</a
+          >
+        </div>
+      </div>
+      <div class="md:w-1/2 flex justify-center animate-fade-in-delay-1">
+        <div class="relative w-full max-w-md rounded-lg overflow-hidden shadow-xl">
+          <img
+            src="https://cigore.github.io/eoni/katalog-4.png"
+            alt="EONI Collection"
+            class="w-full h-auto object-contain"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- Decorative elements -->
+    <div
+      class="absolute -bottom-16 -right-16 w-64 h-64 bg-eoni-green/10 dark:bg-eoni-green/5 rounded-full blur-3xl"
+    ></div>
+    <div
+      class="absolute -top-32 -left-32 w-96 h-96 bg-eoni-green/10 dark:bg-eoni-green/5 rounded-full blur-3xl"
+    ></div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="py-16 bg-white dark:bg-eoni-light-dark">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2
+          class="text-3xl md:text-4xl font-bold text-eoni-green dark:text-white mb-4"
+        >
+          Tentang EONI
+        </h2>
+        <div class="w-20 h-1 bg-eoni-green mx-auto mb-6"></div>
+        <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+          Menggabungkan keindahan budaya lokal Indonesia dengan desain modern untuk
+          menciptakan pakaian yang tidak hanya stylish tetapi juga bermakna.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div
+          class="bg-eoni-cream dark:bg-eoni-dark rounded-xl p-6 shadow-md hover:shadow-lg transition-all"
+        >
+          <div
+            class="w-14 h-14 bg-eoni-green/20 rounded-full flex items-center justify-center mb-4"
+          >
+            <i class="fas fa-leaf text-eoni-green text-2xl"></i>
+          </div>
+          <h3
+            class="text-xl font-semibold mb-3 text-eoni-green dark:text-white"
+          >
+            Kearifan Lokal
+          </h3>
+          <p class="text-gray-600 dark:text-gray-400">
+            Setiap desain kami terinspirasi dari keberagaman budaya Indonesia yang kaya,
+            mempromosikan dan melestarikan warisan budaya kita.
+          </p>
+        </div>
+
+        <div
+          class="bg-eoni-cream dark:bg-eoni-dark rounded-xl p-6 shadow-md hover:shadow-lg transition-all"
+        >
+          <div
+            class="w-14 h-14 bg-eoni-green/20 rounded-full flex items-center justify-center mb-4"
+          >
+            <i class="fas fa-tshirt text-eoni-green text-2xl"></i>
+          </div>
+          <h3
+            class="text-xl font-semibold mb-3 text-eoni-green dark:text-white"
+          >
+            Kualitas Premium
+          </h3>
+          <p class="text-gray-600 dark:text-gray-400">
+            Kami menggunakan bahan berkualitas tinggi dan proses produksi yang teliti
+            untuk memastikan setiap produk EONI nyaman dan tahan lama.
+          </p>
+        </div>
+
+        <div
+          class="bg-eoni-cream dark:bg-eoni-dark rounded-xl p-6 shadow-md hover:shadow-lg transition-all"
+        >
+          <div
+            class="w-14 h-14 bg-eoni-green/20 rounded-full flex items-center justify-center mb-4"
+          >
+            <i class="fas fa-heart text-eoni-green text-2xl"></i>
+          </div>
+          <h3
+            class="text-xl font-semibold mb-3 text-eoni-green dark:text-white"
+          >
+            Berkelanjutan
+          </h3>
+          <p class="text-gray-600 dark:text-gray-400">
+            Berkomitmen untuk praktik bisnis yang bertanggung jawab, mendukung pengrajin
+            lokal dan mengurangi dampak lingkungan.
+          </p>
+        </div>
+      </div>
+
+      <div
+        class="mt-16 bg-eoni-cream dark:bg-eoni-dark rounded-xl p-8 shadow-lg"
+      >
+        <div class="flex flex-col md:flex-row items-center">
+          <div class="md:w-3/5 mb-8 md:mb-0 md:pr-8">
+            <div
+              class="aspect-[4/3] w-full max-w-none mx-auto bg-gray-200 dark:bg-gray-700 rounded-lg overflow-hidden relative"
+            >
+              <img
+                src="https://cigore.github.io/eoni/tim4.png"
+                alt="Foto Tim EONI"
+                class="w-full h-full object-cover transition-transform duration-300"
+                loading="lazy"
+              />
             </div>
-            
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Product 1 -->
-                <div class="product-card group relative bg-white dark:bg-eoni-light-dark rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300">
-                    <div class="aspect-[3/4] bg-gray-200 dark:bg-gray-700 relative overflow-hidden">
-                        <img 
-                            src="https://cigore.github.io/eoni/katalog-1.png" 
-                            alt="Batik Contempo Tee" 
-                            class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                            loading="lazy"
-                        />
-                        <!-- Overlay untuk efek hover -->
-                        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300"></div>
-                        
-                        <div class="product-actions absolute bottom-0 left-0 right-0 bg-black/60 p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                            <div class="flex justify-center space-x-4">
-                                <a href="#" class="text-white hover:text-eoni-green">
-                                    <i class="fas fa-eye"></i>
-                                </a>
-                                <a href="#contact" class="text-white hover:text-eoni-green">
-                                    <i class="fas fa-shopping-bag"></i>
-                                </a>
-                                <a href="https://wa.me/6281378233416?text=Halo,%20saya%20ingin%20bertanya%20tentang%20produk%20yang%20Anda%20jual" target="_blank" class="text-white hover:text-eoni-green">
-                                    <i class="fab fa-whatsapp"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="p-4">
-                        <h3 class="text-lg font-medium text-gray-800 dark:text-white">Batik Contempo Tee</h3>
-                        <p class="text-sm text-gray-500 dark:text-gray-400 mb-2">Kaos dengan motif batik kontemporer</p>
-                        <div class="flex justify-between items-center mt-2">
-                            <span class="text-eoni-green font-bold">Rp 199.000</span>
-                            <div class="flex items-center space-x-1">
-                                <i class="fas fa-star text-yellow-500 text-sm"></i>
-                                <span class="text-sm text-gray-600 dark:text-gray-400">4.9</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Product 2 -->
-                <div class="product-card group relative bg-white dark:bg-eoni-light-dark rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300">
-                    <div class="aspect-[3/4] bg-gray-200 dark:bg-gray-700 relative overflow-hidden">
-                        <img 
-                            src="https://cigore.github.io/eoni/katalog-6.png" 
-                            alt="Songket Heritage Jacket" 
-                            class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                            loading="lazy"
-                        />
-                        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300"></div>
-                        
-                        <div class="product-actions absolute bottom-0 left-0 right-0 bg-black/60 p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                            <div class="flex justify-center space-x-4">
-                                <a href="#" class="text-white hover:text-eoni-green">
-                                    <i class="fas fa-eye"></i>
-                                </a>
-                                <a href="#contact" class="text-white hover:text-eoni-green">
-                                    <i class="fas fa-shopping-bag"></i>
-                                </a>
-                                <a href="https://wa.me/6281378233416?text=Halo,%20saya%20ingin%20bertanya%20tentang%20produk%20yang%20Anda%20jual" target="_blank" class="text-white hover:text-eoni-green">
-                                    <i class="fab fa-whatsapp"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="p-4">
-                        <h3 class="text-lg font-medium text-gray-800 dark:text-white">Songket Heritage Jacket</h3>
-                        <p class="text-sm text-gray-500 dark:text-gray-400 mb-2">Jaket dengan detail songket Minangkabau</p>
-                        <div class="flex justify-between items-center mt-2">
-                            <span class="text-eoni-green font-bold">Rp 349.000</span>
-                            <div class="flex items-center space-x-1">
-                                <i class="fas fa-star text-yellow-500 text-sm"></i>
-                                <span class="text-sm text-gray-600 dark:text-gray-400">4.8</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Product 3 -->
-                <div class="product-card group relative bg-white dark:bg-eoni-light-dark rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300">
-                    <div class="aspect-[3/4] bg-gray-200 dark:bg-gray-700 relative overflow-hidden">
-                        <img 
-                            src="https://cigore.github.io/eoni/katalog-2.png" 
-                            alt="Ikat Essentials Shirt" 
-                            class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                            loading="lazy"
-                        />
-                        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300"></div>
-                        
-                        <div class="product-actions absolute bottom-0 left-0 right-0 bg-black/60 p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                            <div class="flex justify-center space-x-4">
-                                <a href="#" class="text-white hover:text-eoni-green">
-                                    <i class="fas fa-eye"></i>
-                                </a>
-                                <a href="#contact" class="text-white hover:text-eoni-green">
-                                    <i class="fas fa-shopping-bag"></i>
-                                </a>
-                                <a href="https://wa.me/6281378233416?text=Halo,%20saya%20ingin%20bertanya%20tentang%20produk%20yang%20Anda%20jual" target="_blank" class="text-white hover:text-eoni-green">
-                                    <i class="fab fa-whatsapp"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="p-4">
-                        <h3 class="text-lg font-medium text-gray-800 dark:text-white">Ikat Essentials Shirt</h3>
-                        <p class="text-sm text-gray-500 dark:text-gray-400 mb-2">Kemeja dengan motif tenun ikat Sumba</p>
-                        <div class="flex justify-between items-center mt-2">
-                            <span class="text-eoni-green font-bold">Rp 289.000</span>
-                            <div class="flex items-center space-x-1">
-                                <i class="fas fa-star text-yellow-500 text-sm"></i>
-                                <span class="text-sm text-gray-600 dark:text-gray-400">4.7</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Product 4 -->
-                <div class="product-card group relative bg-white dark:bg-eoni-light-dark rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300">
-                    <div class="aspect-[3/4] bg-gray-200 dark:bg-gray-700 relative overflow-hidden">
-                        <img 
-                            src="https://cigore.github.io/eoni/katalog-3.png" 
-                            alt="Lombok Artisan Hoodie" 
-                            class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                            loading="lazy"
-                        />
-                        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300"></div>
-                        
-                        <div class="product-actions absolute bottom-0 left-0 right-0 bg-black/60 p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                            <div class="flex justify-center space-x-4">
-                                <a href="#" class="text-white hover:text-eoni-green">
-                                    <i class="fas fa-eye"></i>
-                                </a>
-                                <a href="#contact" class="text-white hover:text-eoni-green">
-                                    <i class="fas fa-shopping-bag"></i>
-                                </a>
-                                <a href="https://wa.me/6281378233416?text=Halo,%20saya%20ingin%20bertanya%20tentang%20produk%20yang%20Anda%20jual" target="_blank" class="text-white hover:text-eoni-green">
-                                    <i class="fab fa-whatsapp"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="p-4">
-                        <h3 class="text-lg font-medium text-gray-800 dark:text-white">Lombok Artisan Hoodie</h3>
-                        <p class="text-sm text-gray-500 dark:text-gray-400 mb-2">Hoodie dengan motif kain Sasak Lombok</p>
-                        <div class="flex justify-between items-center mt-2">
-                            <span class="text-eoni-green font-bold">Rp 329.000</span>
-                            <div class="flex items-center space-x-1">
-                                <i class="fas fa-star text-yellow-500 text-sm"></i>
-                                <span class="text-sm text-gray-600 dark:text-gray-400">4.9</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Product 5 -->
-                <div class="product-card group relative bg-white dark:bg-eoni-light-dark rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300">
-                    <div class="aspect-[3/4] bg-gray-200 dark:bg-gray-700 relative overflow-hidden">
-                        <img 
-                            src="https://cigore.github.io/eoni/katalog-7.png" 
-                            alt="Toraja Graphic T-Shirt" 
-                            class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                            loading="lazy"
-                        />
-                        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300"></div>
-                        
-                        <div class="product-actions absolute bottom-0 left-0 right-0 bg-black/60 p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                            <div class="flex justify-center space-x-4">
-                                <a href="#" class="text-white hover:text-eoni-green">
-                                    <i class="fas fa-eye"></i>
-                                </a>
-                                <a href="#contact" class="text-white hover:text-eoni-green">
-                                    <i class="fas fa-shopping-bag"></i>
-                                </a>
-                                <a href="https://wa.me/6281378233416?text=Halo,%20saya%20ingin%20bertanya%20tentang%20produk%20yang%20Anda%20jual" target="_blank" class="text-white hover:text-eoni-green">
-                                    <i class="fab fa-whatsapp"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="p-4">
-                        <h3 class="text-lg font-medium text-gray-800 dark:text-white">Toraja Graphic T-Shirt</h3>
-                        <p class="text-sm text-gray-500 dark:text-gray-400 mb-2">Kaos dengan grafis Toraja Sulawesi</p>
-                        <div class="flex justify-between items-center mt-2">
-                            <span class="text-eoni-green font-bold">Rp 179.000</span>
-                            <div class="flex items-center space-x-1">
-                                <i class="fas fa-star text-yellow-500 text-sm"></i>
-                                <span class="text-sm text-gray-600 dark:text-gray-400">4.6</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Product 6 -->
-                <div class="product-card group relative bg-white dark:bg-eoni-light-dark rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300">
-                    <div class="aspect-[3/4] bg-gray-200 dark:bg-gray-700 relative overflow-hidden">
-                        <img 
-                            src="https://cigore.github.io/eoni/katalog-5.png" 
-                            alt="Dayak Tapestry Polo" 
-                            class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                            loading="lazy"
-                        />
-                        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300"></div>
-                        
-                        <div class="product-actions absolute bottom-0 left-0 right-0 bg-black/60 p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                            <div class="flex justify-center space-x-4">
-                                <a href="#" class="text-white hover:text-eoni-green">
-                                    <i class="fas fa-eye"></i>
-                                </a>
-                                <a href="#contact" class="text-white hover:text-eoni-green">
-                                    <i class="fas fa-shopping-bag"></i>
-                                </a>
-                                <a href="https://wa.me/6281378233416?text=Halo,%20saya%20ingin%20bertanya%20tentang%20produk%20yang%20Anda%20jual" target="_blank" class="text-white hover:text-eoni-green">
-                                    <i class="fab fa-whatsapp"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="p-4">
-                        <h3 class="text-lg font-medium text-gray-800 dark:text-white">Dayak Tapestry Polo</h3>
-                        <p class="text-sm text-gray-500 dark:text-gray-400 mb-2">Polo shirt dengan detail motif Dayak</p>
-                        <div class="flex justify-between items-center mt-2">
-                            <span class="text-eoni-green font-bold">Rp 259.000</span>
-                            <div class="flex items-center space-x-1">
-                                <i class="fas fa-star text-yellow-500 text-sm"></i>
-                                <span class="text-sm text-gray-600 dark:text-gray-400">4.8</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+          </div>
+          <div class="md:w-2/5">
+            <h3
+              class="text-2xl font-bold mb-4 text-eoni-green dark:text-white"
+            >
+              Cerita Kami
+            </h3>
+            <p class="text-gray-600 dark:text-gray-400 mb-4">
+              EONI lahir dari kecintaan terhadap keberagaman budaya Indonesia yang kaya.
+              Kami percaya bahwa warisan budaya Indonesia memiliki nilai estetika yang
+              tinggi dan cerita yang mendalam, yang layak untuk diangkat ke dalam desain
+              modern.
+            </p>
+            <p class="text-gray-600 dark:text-gray-400 mb-4">
+              Setiap koleksi kami mewakili kekayaan motif, warna, dan filosofi dari berbagai
+              daerah di Indonesia. Dengan sentuhan desain kontemporer, kami menciptakan
+              pakaian yang tidak hanya stylish tetapi juga menjadi media untuk menceritakan
+              keindahan budaya Indonesia.
+            </p>
+            <div class="flex space-x-4 mt-6">
+              <a
+                href="#products"
+                class="bg-eoni-green hover:bg-eoni-green/90 text-white px-5 py-2 rounded-lg font-medium transition-all"
+                >Produk Kami</a
+              >
             </div>
-            
-            <div class="text-center mt-12">
-                <a href="#contact" class="inline-block bg-eoni-green hover:bg-eoni-green/90 text-white px-8 py-3 rounded-lg font-medium transition-all shadow-lg hover:shadow-xl">
-                    Hubungi Kami untuk Pesanan
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Products Section -->
+  <section id="products" class="py-16 bg-eoni-cream dark:bg-eoni-dark">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2
+          class="text-3xl md:text-4xl font-bold text-eoni-green dark:text-white mb-4"
+        >
+          Koleksi Kami
+        </h2>
+        <div class="w-20 h-1 bg-eoni-green mx-auto mb-6"></div>
+        <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+          Jelajahi koleksi pakaian kami yang terinspirasi dari berbagai budaya Indonesia.
+          Desain eksklusif dengan kualitas premium.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Product 1 -->
+        <div
+          class="product-card group relative bg-white dark:bg-eoni-light-dark rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300"
+        >
+          <div class="aspect-[3/4] bg-gray-200 dark:bg-gray-700 relative overflow-hidden">
+            <img
+              src="https://cigore.github.io/eoni/katalog-1.png"
+              alt="Batik Contempo Tee"
+              class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+              loading="lazy"
+            />
+            <div
+              class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300"
+            ></div>
+            <div
+              class="product-actions absolute bottom-0 left-0 right-0 bg-black/60 p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+            >
+              <div class="flex justify-center space-x-4">
+                <a href="#" class="text-eoni-green hover:text-white">
+                  <i class="fas fa-eye"></i>
                 </a>
+                <a href="#contact" class="text-white hover:text-eoni-green">
+                  <i class="fas fa-shopping-bag"></i>
+                </a>
+                <a
+                  href="https://wa.me/6281378233416?text=Halo,%20saya%20ingin%20bertanya%20tentang%20produk%20yang%20Anda%20jual"
+                  target="_blank"
+                  class="text-white hover:text-eoni-green"
+                >
+                  <i class="fab fa-whatsapp"></i>
+                </a>
+              </div>
             </div>
+          </div>
+          <div class="p-4">
+            <h3 class="text-lg font-medium text-gray-800 dark:text-white">
+              Batik Contempo Tee
+            </h3>
+            <p class="text-sm text-gray-500 dark:text-gray-400 mb-2">
+              Kaos dengan motif batik kontemporer
+            </p>
+            <div class="flex justify-between items-center mt-2">
+              <span class="text-eoni-green font-bold">Rp 199.000</span>
+              <div class="flex items-center space-x-1">
+                <i class="fas fa-star text-yellow-500 text-sm"></i>
+                <span class="text-sm text-gray-600 dark:text-gray-400">4.9</span>
+              </div>
+            </div>
+          </div>
         </div>
-    </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-16 bg-white dark:bg-eoni-light-dark">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold text-eoni-green dark:text-white mb-4">Hubungi Kami</h2>
-                <div class="w-20 h-1 bg-eoni-green mx-auto mb-6"></div>
-                <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-                    Tertarik dengan produk kami? Hubungi kami melalui platform berikut untuk informasi lebih lanjut atau pemesanan.
+        <!-- Product 2 -->
+        <div
+          class="product-card group relative bg-white dark:bg-eoni-light-dark rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300"
+        >
+          <div class="aspect-[3/4] bg-gray-200 dark:bg-gray-700 relative overflow-hidden">
+            <img
+              src="https://cigore.github.io/eoni/katalog-6.png"
+              alt="Songket Heritage Jacket"
+              class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+              loading="lazy"
+            />
+            <div
+              class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300"
+            ></div>
+            <div
+              class="product-actions absolute bottom-0 left-0 right-0 bg-black/60 p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+            >
+              <div class="flex justify-center space-x-4">
+                <a href="#" class="text-eoni-green hover:text-white">
+                  <i class="fas fa-eye"></i>
+                </a>
+                <a href="#contact" class="text-white hover:text-eoni-green">
+                  <i class="fas fa-shopping-bag"></i>
+                </a>
+                <a
+                  href="https://wa.me/6281378233416?text=Halo,%20saya%20ingin%20bertanya%20tentang%20produk%20yang%20Anda%20jual"
+                  target="_blank"
+                  class="text-white hover:text-eoni-green"
+                >
+                  <i class="fab fa-whatsapp"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="p-4">
+            <h3 class="text-lg font-medium text-gray-800 dark:text-white">
+              Songket Heritage Jacket
+            </h3>
+            <p class="text-sm text-gray-500 dark:text-gray-400 mb-2">
+              Jaket dengan detail songket Minangkabau
+            </p>
+            <div class="flex justify-between items-center mt-2">
+              <span class="text-eoni-green font-bold">Rp 349.000</span>
+              <div class="flex items-center space-x-1">
+                <i class="fas fa-star text-yellow-500 text-sm"></i>
+                <span class="text-sm text-gray-600 dark:text-gray-400">4.8</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 3 -->
+        <div
+          class="product-card group relative bg-white dark:bg-eoni-light-dark rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300"
+        >
+          <div class="aspect-[3/4] bg-gray-200 dark:bg-gray-700 relative overflow-hidden">
+            <img
+              src="https://cigore.github.io/eoni/katalog-2.png"
+              alt="Ikat Essentials Shirt"
+              class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+              loading="lazy"
+            />
+            <div
+              class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300"
+            ></div>
+            <div
+              class="product-actions absolute bottom-0 left-0 right-0 bg-black/60 p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+            >
+              <div class="flex justify-center space-x-4">
+                <a href="#" class="text-eoni-green hover:text-white">
+                  <i class="fas fa-eye"></i>
+                </a>
+                <a href="#contact" class="text-white hover:text-eoni-green">
+                  <i class="fas fa-shopping-bag"></i>
+                </a>
+                <a
+                  href="https://wa.me/6281378233416?text=Halo,%20saya%20ingin%20bertanya%20tentang%20produk%20yang%20Anda%20jual"
+                  target="_blank"
+                  class="text-white hover:text-eoni-green"
+                >
+                  <i class="fab fa-whatsapp"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="p-4">
+            <h3 class="text-lg font-medium text-gray-800 dark:text-white">
+              Ikat Essentials Shirt
+            </h3>
+            <p class="text-sm text-gray-500 dark:text-gray-400 mb-2">
+              Kemeja dengan motif tenun ikat Sumba
+            </p>
+            <div class="flex justify-between items-center mt-2">
+              <span class="text-eoni-green font-bold">Rp 289.000</span>
+              <div class="flex items-center space-x-1">
+                <i class="fas fa-star text-yellow-500 text-sm"></i>
+                <span class="text-sm text-gray-600 dark:text-gray-400">4.7</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 4 -->
+        <div
+          class="product-card group relative bg-white dark:bg-eoni-light-dark rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300"
+        >
+          <div class="aspect-[3/4] bg-gray-200 dark:bg-gray-700 relative overflow-hidden">
+            <img
+              src="https://cigore.github.io/eoni/katalog-3.png"
+              alt="Lombok Artisan Hoodie"
+              class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+              loading="lazy"
+            />
+            <div
+              class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300"
+            ></div>
+            <div
+              class="product-actions absolute bottom-0 left-0 right-0 bg-black/60 p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+            >
+              <div class="flex justify-center space-x-4">
+                <a href="#" class="text-eoni-green hover:text-white">
+                  <i class="fas fa-eye"></i>
+                </a>
+                <a href="#contact" class="text-white hover:text-eoni-green">
+                  <i class="fas fa-shopping-bag"></i>
+                </a>
+                <a
+                  href="https://wa.me/6281378233416?text=Halo,%20saya%20ingin%20bertanya%20tentang%20produk%20yang%20Anda%20jual"
+                  target="_blank"
+                  class="text-white hover:text-eoni-green"
+                >
+                  <i class="fab fa-whatsapp"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="p-4">
+            <h3 class="text-lg font-medium text-gray-800 dark:text-white">
+              Lombok Artisan Hoodie
+            </h3>
+            <p class="text-sm text-gray-500 dark:text-gray-400 mb-2">
+              Hoodie dengan motif kain Sasak Lombok
+            </p>
+            <div class="flex justify-between items-center mt-2">
+              <span class="text-eoni-green font-bold">Rp 329.000</span>
+              <div class="flex items-center space-x-1">
+                <i class="fas fa-star text-yellow-500 text-sm"></i>
+                <span class="text-sm text-gray-600 dark:text-gray-400">4.9</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 5 -->
+        <div
+          class="product-card group relative bg-white dark:bg-eoni-light-dark rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300"
+        >
+          <div class="aspect-[3/4] bg-gray-200 dark:bg-gray-700 relative overflow-hidden">
+            <img
+              src="https://cigore.github.io/eoni/katalog-7.png"
+              alt="Toraja Graphic T-Shirt"
+              class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+              loading="lazy"
+            />
+            <div
+              class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300"
+            ></div>
+            <div
+              class="product-actions absolute bottom-0 left-0 right-0 bg-black/60 p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+            >
+              <div class="flex justify-center space-x-4">
+                <a href="#" class="text-eoni-green hover:text-white">
+                  <i class="fas fa-eye"></i>
+                </a>
+                <a href="#contact" class="text-white hover:text-eoni-green">
+                  <i class="fas fa-shopping-bag"></i>
+                </a>
+                <a
+                  href="https://wa.me/6281378233416?text=Halo,%20saya%20ingin%20bertanya%20tentang%20produk%20yang%20Anda%20jual"
+                  target="_blank"
+                  class="text-white hover:text-eoni-green"
+                >
+                  <i class="fab fa-whatsapp"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="p-4">
+            <h3 class="text-lg font-medium text-gray-800 dark:text-white">
+              Toraja Graphic T-Shirt
+            </h3>
+            <p class="text-sm text-gray-500 dark:text-gray-400 mb-2">
+              Kaos dengan grafis Toraja Sulawesi
+            </p>
+            <div class="flex justify-between items-center mt-2">
+              <span class="text-eoni-green font-bold">Rp 179.000</span>
+              <div class="flex items-center space-x-1">
+                <i class="fas fa-star text-yellow-500 text-sm"></i>
+                <span class="text-sm text-gray-600 dark:text-gray-400">4.6</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 6 -->
+        <div
+          class="product-card group relative bg-white dark:bg-eoni-light-dark rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300"
+        >
+          <div class="aspect-[3/4] bg-gray-200 dark:bg-gray-700 relative overflow-hidden">
+            <img
+              src="https://cigore.github.io/eoni/katalog-5.png"
+              alt="Dayak Tapestry Polo"
+              class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+              loading="lazy"
+            />
+            <div
+              class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300"
+            ></div>
+            <div
+              class="product-actions absolute bottom-0 left-0 right-0 bg-black/60 p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+            >
+              <div class="flex justify-center space-x-4">
+                <a href="#" class="text-eoni-green hover:text-white">
+                  <i class="fas fa-eye"></i>
+                </a>
+                <a href="#contact" class="text-white hover:text-eoni-green">
+                  <i class="fas fa-shopping-bag"></i>
+                </a>
+                <a
+                  href="https://wa.me/6281378233416?text=Halo,%20saya%20ingin%20bertanya%20tentang%20produk%20yang%20Anda%20jual"
+                  target="_blank"
+                  class="text-white hover:text-eoni-green"
+                >
+                  <i class="fab fa-whatsapp"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="p-4">
+            <h3 class="text-lg font-medium text-gray-800 dark:text-white">
+              Dayak Tapestry Polo
+            </h3>
+            <p class="text-sm text-gray-500 dark:text-gray-400 mb-2">
+              Polo shirt dengan detail motif Dayak
+            </p>
+            <div class="flex justify-between items-center mt-2">
+              <span class="text-eoni-green font-bold">Rp 259.000</span>
+              <div class="flex items-center space-x-1">
+                <i class="fas fa-star text-yellow-500 text-sm"></i>
+                <span class="text-sm text-gray-600 dark:text-gray-400">4.8</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center mt-12">
+        <a
+          href="#contact"
+          class="inline-block bg-eoni-green hover:bg-eoni-green/90 text-white px-8 py-3 rounded-lg font-medium transition-all shadow-lg hover:shadow-xl"
+          >Hubungi Kami untuk Pesanan</a
+        >
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-16 bg-white dark:bg-eoni-light-dark">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2
+          class="text-3xl md:text-4xl font-bold text-eoni-green dark:text-white mb-4"
+        >
+          Hubungi Kami
+        </h2>
+        <div class="w-20 h-1 bg-eoni-green mx-auto mb-6"></div>
+        <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+          Tertarik dengan produk kami? Hubungi kami melalui platform berikut untuk
+          informasi lebih lanjut atau pemesanan.
+        </p>
+      </div>
+
+      <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div
+          class="bg-eoni-cream dark:bg-eoni-dark rounded-xl p-6 shadow-md hover:shadow-lg transition-all"
+        >
+          <h3
+            class="text-xl font-semibold mb-6 text-eoni-green dark:text-white"
+          >
+            Platform Belanja
+          </h3>
+
+          <div class="space-y-4">
+            <a
+              href="https://wa.me/6281378233416?text=Halo,%20saya%20ingin%20bertanya%20tentang%20produk%20yang%20Anda%20jual"
+              target="_blank"
+              class="flex items-center p-4 bg-white dark:bg-eoni-light-dark rounded-lg hover:shadow-md transition-all"
+            >
+              <div
+                class="w-12 h-12 bg-green-500/20 rounded-full flex items-center justify-center mr-4"
+              >
+                <i class="fab fa-whatsapp text-green-500 text-2xl"></i>
+              </div>
+              <div>
+                <h4 class="font-medium text-gray-800 dark:text-white">WhatsApp</h4>
+                <p class="text-sm text-gray-500 dark:text-gray-400">
+                  Respons Cepat dalam 1 - 2 jam
                 </p>
-            </div>
-            
-            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="bg-eoni-cream dark:bg-eoni-dark rounded-xl p-6 shadow-md hover:shadow-lg transition-all">
-                    <h3 class="text-xl font-semibold mb-6 text-eoni-green dark:text-white">Platform Belanja</h3>
-                    
-                    <div class="space-y-4">
-                        <a href="https://wa.me/6281378233416?text=Halo,%20saya%20ingin%20bertanya%20tentang%20produk%20yang%20Anda%20jual" target="_blank" class="flex items-center p-4 bg-white dark:bg-eoni-light-dark rounded-lg hover:shadow-md transition-all">
-                            <div class="w-12 h-12 bg-green-500/20 rounded-full flex items-center justify-center mr-4">
-                                <i class="fab fa-whatsapp text-green-500 text-2xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-medium text-gray-800 dark:text-white">WhatsApp</h4>
-                                <p class="text-sm text-gray-500 dark:text-gray-400">Respons Cepat dalam 1 - 2 jam</p>
-                            </div>
-                            <i class="fas fa-chevron-right ml-auto text-gray-400"></i>
-                        </a>
-                        
-                        <a href="https://shopee.co.id/eonimood.id" target="_blank" class="flex items-center p-4 bg-white dark:bg-eoni-light-dark rounded-lg hover:shadow-md transition-all">
-                            <div class="w-12 h-12 bg-orange-500/20 rounded-full flex items-center justify-center mr-4">
-                                <i class="fas fa-shopping-bag text-orange-500 text-2xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-medium text-gray-800 dark:text-white">Shopee</h4>
-                                <p class="text-sm text-gray-500 dark:text-gray-400">EONI Official Store</p>
-                            </div>
-                            <i class="fas fa-chevron-right ml-auto text-gray-400"></i>
-                        </a>
-                        
-                        <a href="https://tokopedia.com/eonimood.id" target="_blank" class="flex items-center p-4 bg-white dark:bg-eoni-light-dark rounded-lg hover:shadow-md transition-all">
-                            <div class="w-12 h-12 bg-green-500/20 rounded-full flex items-center justify-center mr-4">
-                                <i class="fas fa-store text-green-500 text-2xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-medium text-gray-800 dark:text-white">Tokopedia</h4>
-                                <p class="text-sm text-gray-500 dark:text-gray-400">EONI Official</p>
-                            </div>
-                            <i class="fas fa-chevron-right ml-auto text-gray-400"></i>
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="bg-eoni-cream dark:bg-eoni-dark rounded-xl p-6 shadow-md hover:shadow-lg transition-all">
-                    <h3 class="text-xl font-semibold mb-6 text-eoni-green dark:text-white">Media Sosial</h3>
-                    
-                    <div class="space-y-4">
-                        <a href="https://instagram.com/eonimood.id" target="_blank" class="flex items-center p-4 bg-white dark:bg-eoni-light-dark rounded-lg hover:shadow-md transition-all">
-                            <div class="w-12 h-12 bg-pink-500/20 rounded-full flex items-center justify-center mr-4">
-                                <i class="fab fa-instagram text-pink-500 text-2xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-medium text-gray-800 dark:text-white">Instagram</h4>
-                                <p class="text-sm text-gray-500 dark:text-gray-400">@eonimood.id</p>
-                            </div>
-                            <i class="fas fa-chevron-right ml-auto text-gray-400"></i>
-                        </a>
-                        
-                        <a href="https://tiktok.com/@eonimood" target="_blank" class="flex items-center p-4 bg-white dark:bg-eoni-light-dark rounded-lg hover:shadow-md transition-all">
-                            <div class="w-12 h-12 bg-black/20 rounded-full flex items-center justify-center mr-4">
-                                <i class="fab fa-tiktok text-black dark:text-white text-2xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-medium text-gray-800 dark:text-white">TikTok</h4>
-                                <p class="text-sm text-gray-500 dark:text-gray-400">@eonimood.id</p>
-                            </div>
-                            <i class="fas fa-chevron-right ml-auto text-gray-400"></i>
-                        </a>
-                        
-                        <a href="mailto:eonimood.id@gmail.com" class="flex items-center p-4 bg-white dark:bg-eoni-light-dark rounded-lg hover:shadow-md transition-all">
-                            <div class="w-12 h-12 bg-blue-500/20 rounded-full flex items-center justify-center mr-4">
-                                <i class="fas fa-envelope text-blue-500 text-2xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-medium text-gray-800 dark:text-white">Email</h4>
-                                <p class="text-sm text-gray-500 dark:text-gray-400">eonimood.id@gmail.com</p>
-                            </div>
-                            <i class="fas fa-chevron-right ml-auto text-gray-400"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
+              </div>
+              <i class="fas fa-chevron-right ml-auto text-gray-400"></i>
+            </a>
+
+            <a
+              href="https://shopee.co.id/eonimood.id"
+              target="_blank"
+              class="flex items-center p-4 bg-white dark:bg-eoni-light-dark rounded-lg hover:shadow-md transition-all"
+            >
+              <div
+                class="w-12 h-12 bg-orange-500/20 rounded-full flex items-center justify-center mr-4"
+              >
+                <i class="fas fa-shopping-bag text-orange-500 text-2xl"></i>
+              </div>
+              <div>
+                <h4 class="font-medium text-gray-800 dark:text-white">Shopee</h4>
+                <p class="text-sm text-gray-500 dark:text-gray-400">
+                  EONI Official Store
+                </p>
+              </div>
+              <i class="fas fa-chevron-right ml-auto text-gray-400"></i>
+            </a>
+
+            <a
+              href="https://tokopedia.com/eonimood.id"
+              target="_blank"
+              class="flex items-center p-4 bg-white dark:bg-eoni-light-dark rounded-lg hover:shadow-md transition-all"
+            >
+              <div
+                class="w-12 h-12 bg-green-500/20 rounded-full flex items-center justify-center mr-4"
+              >
+                <i class="fas fa-store text-green-500 text-2xl"></i>
+              </div>
+              <div>
+                <h4 class="font-medium text-gray-800 dark:text-white">Tokopedia</h4>
+                <p class="text-sm text-gray-500 dark:text-gray-400">EONI Official</p>
+              </div>
+              <i class="fas fa-chevron-right ml-auto text-gray-400"></i>
+            </a>
+          </div>
         </div>
-    </section>
 
-    <!-- Footer -->
-    <footer class="bg-eoni-green text-white py-12">
-        <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                <!-- Logo dan Deskripsi -->
-                <div class="col-span-1 md:col-span-1">
-                    <div class="flex items-center gap-2 mb-4">
-                        <div class="w-16 h-16">
-                            <img src="https://cigore.github.io/eoni/eoni.png" alt="EONI Logo" class="w-full h-full rounded-lg">
-                        </div>
-                    </div>
-                    <p class="text-gray-300 mb-6">
-                        Elegance of Natural Indonesia
-                    </p>
-                    <div class="flex space-x-4">
-                        <a href="https://instagram.com/eonimood.id" target="_blank" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="https://tiktok.com/@eonimood.id" target="_blank" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors">
-                            <i class="fab fa-tiktok"></i>
-                        </a>
-                        <a href="https://wa.me/6281378233416?text=Halo,%20saya%20ingin%20bertanya%20tentang%20produk%20yang%20Anda%20jual" target="_blank" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors">
-                            <i class="fab fa-whatsapp"></i>
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- Tautan Cepat -->
-                <div>
-                    <h3 class="text-lg font-semibold mb-4">Tautan Cepat</h3>
-                    <ul class="space-y-2">
-                        <li><a href="#home" class="text-gray-300 hover:text-white transition-colors">Beranda</a></li>
-                        <li><a href="#about" class="text-gray-300 hover:text-white transition-colors">Tentang Kami</a></li>
-                        <li><a href="#products" class="text-gray-300 hover:text-white transition-colors">Koleksi</a></li>
-                        <li><a href="#contact" class="text-gray-300 hover:text-white transition-colors">Kontak</a></li>
-                    </ul>
-                </div>
-                
-                <!-- Kategori Produk -->
-                <div>
-                    <h3 class="text-lg font-semibold mb-4">Kategori</h3>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Batik Modern</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Songket Heritage</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Tenun Ikat</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Koleksi Terbaru</a></li>
-                    </ul>
-                </div>
-                
-                <!-- Kontak -->
-                <div>
-                    <h3 class="text-lg font-semibold mb-4">Kontak</h3>
-                    <ul class="space-y-3">
-                        <li class="flex items-start">
-                            <i class="fas fa-map-marker-alt mr-3 mt-1 text-sm"></i>
-                            <span class="text-gray-300 text-sm">Sumatera Barat, Indonesia</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-phone mr-3 text-sm"></i>
-                            <span class="text-gray-300 text-sm">+62-813 7823 3416</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-envelope mr-3 mt-1 text-sm"></i>
-                            <span class="text-gray-300 text-sm">eonimood.id@gmail.com</span>
-                        </li>
-                    </ul>
-                    
-                    <!-- Newsletter -->
-                    <div class="mt-6">
-                        <h4 class="text-sm font-medium mb-2">Ikuti Update Terbaru</h4>
-                        <p class="text-xs text-gray-300 mb-3">Dapatkan info koleksi terbaru via WhatsApp</p>
-                        <a href="https://wa.me/6281378233416?text=Halo,%20saya%20ingin%20mengikuti%20update%20koleksi%20terbaru%20EONI" 
-                           target="_blank" 
-                           class="inline-flex items-center px-3 py-2 bg-white/10 hover:bg-white/20 rounded-lg text-sm transition-colors">
-                            <i class="fab fa-whatsapp mr-2"></i>
-                            Subscribe
-                        </a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="border-t border-white/20 mt-8 pt-8 text-gray-300">
-                <div class="flex flex-col sm:flex-row justify-between items-center gap-2">
-                    <p class="text-sm">&copy;2025 EONI. All rights reserved.</p>
-                    <p class="text-sm">Indonesian Cultural Clothing Brand.</p>
-                </div>
-            </div>
+        <div
+          class="bg-eoni-cream dark:bg-eoni-dark rounded-xl p-6 shadow-md hover:shadow-lg transition-all"
+        >
+          <h3
+            class="text-xl font-semibold mb-6 text-eoni-green dark:text-white"
+          >
+            Media Sosial
+          </h3>
+
+          <div class="space-y-4">
+            <a
+              href="https://instagram.com/eonimood.id"
+              target="_blank"
+              class="flex items-center p-4 bg-white dark:bg-eoni-light-dark rounded-lg hover:shadow-md transition-all"
+            >
+              <div
+                class="w-12 h-12 bg-pink-500/20 rounded-full flex items-center justify-center mr-4"
+              >
+                <i class="fab fa-instagram text-pink-500 text-2xl"></i>
+              </div>
+              <div>
+                <h4 class="font-medium text-gray-800 dark:text-white">Instagram</h4>
+                <p class="text-sm text-gray-500 dark:text-gray-400">@eonimood.id</p>
+              </div>
+              <i class="fas fa-chevron-right ml-auto text-gray-400"></i>
+            </a>
+
+            <a
+              href="https://tiktok.com/@eonimood"
+              target="_blank"
+              class="flex items-center p-4 bg-white dark:bg-eoni-light-dark rounded-lg hover:shadow-md transition-all"
+            >
+              <div
+                class="w-12 h-12 bg-black/20 rounded-full flex items-center justify-center mr-4"
+              >
+                <i
+                  class="fab fa-tiktok text-black dark:text-white text-2xl"
+                ></i>
+              </div>
+              <div>
+                <h4 class="font-medium text-gray-800 dark:text-white">TikTok</h4>
+                <p class="text-sm text-gray-500 dark:text-gray-400">@eonimood.id</p>
+              </div>
+              <i class="fas fa-chevron-right ml-auto text-gray-400"></i>
+            </a>
+
+            <a
+              href="mailto:eonimood.id@gmail.com"
+              class="flex items-center p-4 bg-white dark:bg-eoni-light-dark rounded-lg hover:shadow-md transition-all"
+            >
+              <div
+                class="w-12 h-12 bg-blue-500/20 rounded-full flex items-center justify-center mr-4"
+              >
+                <i class="fas fa-envelope text-blue-500 text-2xl"></i>
+              </div>
+              <div>
+                <h4 class="font-medium text-gray-800 dark:text-white">Email</h4>
+                <p class="text-sm text-gray-500 dark:text-gray-400">
+                  eonimood.id@gmail.com
+                </p>
+              </div>
+              <i class="fas fa-chevron-right ml-auto text-gray-400"></i>
+            </a>
+          </div>
         </div>
-    </footer>
+      </div>
+    </div>
+  </section>
 
-    <!-- Scroll to top button -->
-    <button id="scrollTopBtn" class="scroll-to-top fixed bottom-6 right-6 bg-eoni-green text-white w-12 h-12 rounded-full shadow-lg flex items-center justify-center hover:bg-eoni-green/90 transition-all z-40">
-        <i class="fas fa-arrow-up"></i>
-    </button>
+  <!-- Footer -->
+  <footer class="bg-eoni-green text-white py-12">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <!-- Logo dan Deskripsi -->
+        <div class="col-span-1 md:col-span-1">
+          <div class="flex items-center gap-2 mb-4">
+            <div class="w-16 h-16">
+              <img
+                src="https://cigore.github.io/eoni/eoni.png"
+                alt="EONI Logo"
+                class="w-full h-full rounded-lg"
+              />
+            </div>
+          </div>
+          <p class="text-gray-300 mb-6">Elegance of Natural Indonesia</p>
+          <div class="flex space-x-4">
+            <a
+              href="https://instagram.com/eonimood.id"
+              target="_blank"
+              class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors"
+              ><i class="fab fa-instagram"></i
+            ></a>
+            <a
+              href="https://tiktok.com/@eonimood.id"
+              target="_blank"
+              class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors"
+              ><i class="fab fa-tiktok"></i
+            ></a>
+            <a
+              href="https://wa.me/6281378233416?text=Halo,%20saya%20ingin%20bertanya%20tentang%20produk%20yang%20Anda%20jual"
+              target="_blank"
+              class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors"
+              ><i class="fab fa-whatsapp"></i
+            ></a>
+          </div>
+        </div>
 
-    <script>
-        // Mobile menu toggle
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const mobileMenu = document.getElementById('mobileMenu');
-        
-        mobileMenuBtn.addEventListener('click', () => {
-            if (mobileMenu.classList.contains('hidden')) {
-                mobileMenu.classList.remove('hidden');
-                mobileMenu.classList.add('block');
-            } else {
-                mobileMenu.classList.add('hidden');
-                mobileMenu.classList.remove('block');
-            }
-        });
-        
-        // Dark mode toggle
-        const darkModeToggle = document.getElementById('darkModeToggle');
-        
-        darkModeToggle.addEventListener('click', () => {
-            document.documentElement.classList.toggle('dark');
-        });
-        
-        // Scroll to top button
-        const scrollTopBtn = document.getElementById('scrollTopBtn');
-        
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 300) {
-                scrollTopBtn.classList.add('visible');
-            } else {
-                scrollTopBtn.classList.remove('visible');
-            }
-        });
-        
-        scrollTopBtn.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-        
-        // Close mobile menu when clicking on a link
-        document.querySelectorAll('#mobileMenu a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-                mobileMenu.classList.remove('block');
-            });
-        });
-    </script>
+        <!-- Tautan Cepat -->
+        <div>
+          <h3 class="text-lg font-semibold mb-4">Tautan Cepat</h3>
+          <ul class="space-y-2">
+            <li>
+              <a
+                href="#home"
+                class="text-gray-300 hover:text-white transition-colors"
+                >Beranda</a
+              >
+            </li>
+            <li>
+              <a
+                href="#about"
+                class="text-gray-300 hover:text-white transition-colors"
+                >Tentang Kami</a
+              >
+            </li>
+            <li>
+              <a
+                href="#products"
+                class="text-gray-300 hover:text-white transition-colors"
+                >Koleksi</a
+              >
+            </li>
+            <li>
+              <a
+                href="#contact"
+                class="text-gray-300 hover:text-white transition-colors"
+                >Kontak</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <!-- Kategori Produk -->
+        <div>
+          <h3 class="text-lg font-semibold mb-4">Kategori</h3>
+          <ul class="space-y-2">
+            <li>
+              <a
+                href="#"
+                class="text-gray-300 hover:text-white transition-colors"
+                >Batik Modern</a
+              >
+            </li>
+            <li>
+              <a
+                href="#"
+                class="text-gray-300 hover:text-white transition-colors"
+                >Songket Heritage</a
+              >
+            </li>
+            <li>
+              <a
+                href="#"
+                class="text-gray-300 hover:text-white transition-colors"
+                >Tenun Ikat</a
+              >
+            </li>
+            <li>
+              <a
+                href="#"
+                class="text-gray-300 hover:text-white transition-colors"
+                >Koleksi Terbaru</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <!-- Kontak -->
+        <div>
+          <h3 class="text-lg font-semibold mb-4">Kontak</h3>
+          <ul class="space-y-3">
+            <li class="flex items-start">
+              <i class="fas fa-map-marker-alt mr-3 mt-1 text-sm"></i>
+              <span class="text-gray-300 text-sm">Sumatera Barat, Indonesia</span>
+            </li>
+            <li class="flex items-center">
+              <i class="fas fa-phone mr-3 text-sm"></i>
+              <span class="text-gray-300 text-sm">+62-813 7823 3416</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-envelope mr-3 mt-1 text-sm"></i>
+              <span class="text-gray-300 text-sm">eonimood.id@gmail.com</span>
+            </li>
+          </ul>
+
+          <!-- Newsletter -->
+          <div class="mt-6">
+            <h4 class="text-sm font-medium mb-2">Ikuti Update Terbaru</h4>
+            <p class="text-xs text-gray-300 mb-3">
+              Dapatkan info koleksi terbaru via WhatsApp
+            </p>
+            <a
+              href="https://wa.me/6281378233416?text=Halo,%20saya%20ingin%20mengikuti%20update%20koleksi%20terbaru%20EONI"
+              target="_blank"
+              class="inline-flex items-center px-3 py-2 bg-white/10 hover:bg-white/20 rounded-lg text-sm transition-colors"
+            >
+              <i class="fab fa-whatsapp mr-2"></i> Subscribe
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="border-t border-white/20 mt-8 pt-8 text-gray-300">
+        <div
+          class="flex flex-col sm:flex-row justify-between items-center gap-2"
+        >
+          <p class="text-sm">&copy;2025 EONI. All rights reserved.</p>
+          <p class="text-sm">Indonesian Cultural Clothing Brand.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll to top button -->
+  <button
+    id="scrollTopBtn"
+    class="scroll-to-top fixed bottom-6 right-6 bg-eoni-green text-white w-12 h-12 rounded-full shadow-lg flex items-center justify-center hover:bg-eoni-green/90 transition-all z-40"
+  >
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <!-- Modal -->
+  <div
+    id="productModal"
+    class="fixed inset-0 hidden items-center justify-center z-50"
+  >
+    <div
+      class="modal-overlay absolute inset-0 bg-black opacity-50"
+      id="modalOverlay"
+    ></div>
+    <div
+      class="bg-white dark:bg-eoni-dark rounded-lg shadow-lg max-w-lg w-full relative p-6 z-50"
+    >
+      <div id="modalContent">
+        <!-- Isi detail produk akan muncul di sini -->
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Mobile menu toggle
+    const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+    const mobileMenu = document.getElementById("mobileMenu");
+
+    mobileMenuBtn.addEventListener("click", () => {
+      if (mobileMenu.classList.contains("hidden")) {
+        mobileMenu.classList.remove("hidden");
+        mobileMenu.classList.add("block");
+      } else {
+        mobileMenu.classList.add("hidden");
+        mobileMenu.classList.remove("block");
+      }
+    });
+
+    // Dark mode toggle
+    const darkModeToggle = document.getElementById("darkModeToggle");
+
+    darkModeToggle.addEventListener("click", () => {
+      document.documentElement.classList.toggle("dark");
+    });
+
+    // Scroll to top button
+    const scrollTopBtn = document.getElementById("scrollTopBtn");
+
+    window.addEventListener("scroll", () => {
+      if (window.pageYOffset > 300) {
+        scrollTopBtn.classList.add("visible");
+      } else {
+        scrollTopBtn.classList.remove("visible");
+      }
+    });
+
+    scrollTopBtn.addEventListener("click", () => {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    });
+
+    // Close mobile menu when clicking on a link
+    document.querySelectorAll("#mobileMenu a").forEach((link) => {
+      link.addEventListener("click", () => {
+        mobileMenu.classList.add("hidden");
+        mobileMenu.classList.remove("block");
+      });
+    });
+
+    // Modal and product detail logic
+    const modal = document.getElementById("productModal");
+    const modalContent = document.getElementById("modalContent");
+    const modalOverlay = document.getElementById("modalOverlay");
+
+    // Data produk (sesuaikan dengan produk yang ada)
+    const productsData = [
+      {
+        title: "Batik Contempo Tee",
+        description: "Kaos dengan motif batik kontemporer",
+        price: "Rp 199.000",
+        rating: 4.9,
+        image: "https://cigore.github.io/eoni/katalog-1.png",
+        details:
+          "Kaos motif batik kontemporer yang nyaman dipakai, cocok untuk aktivitas sehari-hari.",
+      },
+      {
+        title: "Songket Heritage Jacket",
+        description: "Jaket dengan detail songket Minangkabau",
+        price: "Rp 349.000",
+        rating: 4.8,
+        image: "https://cigore.github.io/eoni/katalog-6.png",
+        details:
+          "Jaket songket Minangkabau dengan desain heritage yang elegan dan nyaman dipakai.",
+      },
+      {
+        title: "Ikat Essentials Shirt",
+        description: "Kemeja dengan motif tenun ikat Sumba",
+        price: "Rp 289.000",
+        rating: 4.7,
+        image: "https://cigore.github.io/eoni/katalog-2.png",
+        details:
+          "Kemeja motif tenun ikat khas Sumba dengan bahan berkualitas tinggi dan detail halus.",
+      },
+      {
+        title: "Lombok Artisan Hoodie",
+        description: "Hoodie dengan motif kain Sasak Lombok",
+        price: "Rp 329.000",
+        rating: 4.9,
+        image: "https://cigore.github.io/eoni/katalog-3.png",
+        details:
+          "Hoodie dengan motif kain Sasak Lombok yang stylish dan hangat untuk semua musim.",
+      },
+      {
+        title: "Toraja Graphic T-Shirt",
+        description: "Kaos dengan grafis Toraja Sulawesi",
+        price: "Rp 179.000",
+        rating: 4.6,
+        image: "https://cigore.github.io/eoni/katalog-7.png",
+        details:
+          "Kaos grafis Toraja Sulawesi dengan bahan nyaman dan desain unik.",
+      },
+      {
+        title: "Dayak Tapestry Polo",
+        description: "Polo shirt dengan detail motif Dayak",
+        price: "Rp 259.000",
+        rating: 4.8,
+        image: "https://cigore.github.io/eoni/katalog-5.png",
+        details:
+          "Polo shirt dengan motif Dayak yang tradisional dan modern sekaligus.",
+      },
+    ];
+
+    // Pasang event listener untuk tombol fa-eye (lihat detail)
+    document.querySelectorAll(".fa-eye").forEach((eyeIcon, index) => {
+      eyeIcon.closest("a").addEventListener("click", (e) => {
+        e.preventDefault();
+        const product = productsData[index];
+        const whatsappMessage = encodeURIComponent(`Halo, saya ingin bertanya tentang produk: ${product.title}`);
+
+        modalContent.innerHTML = `
+          <h3 class="text-2xl font-bold mb-2 text-eoni-green dark:text-white">${product.title}</h3>
+          <img src="${product.image}" alt="${product.title}" class="w-full h-auto mb-4 rounded-lg"/>
+          <p class="text-gray-700 dark:text-gray-300 mb-4">${product.details}</p>
+          <div class="flex justify-between items-center mb-4">
+            <span class="text-eoni-green font-bold text-lg">${product.price}</span>
+            <div class="flex items-center space-x-1">
+              <i class="fas fa-star text-yellow-500"></i>
+              <span class="text-gray-600 dark:text-gray-400">${product.rating}</span>
+            </div>
+          </div>
+          <a href="https://wa.me/6281378233416?text=${whatsappMessage}" target="_blank" class="bg-eoni-green hover:bg-eoni-green/90 text-white px-4 py-2 rounded-lg inline-flex items-center space-x-2">
+            <i class="fab fa-whatsapp"></i><span>Tanyakan via WhatsApp</span>
+          </a>
+        `;
+        modal.classList.remove("hidden");
+        modal.classList.add("flex");
+      });
+    });
+
+    // Tutup modal saat klik overlay
+    modalOverlay.addEventListener("click", () => {
+      modal.classList.add("hidden");
+      modal.classList.remove("flex");
+      modalContent.innerHTML = "";
+    });
+
+    // Close modal dengan ESC
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && !modal.classList.contains("hidden")) {
+        modal.classList.add("hidden");
+        modal.classList.remove("flex");
+        modalContent.innerHTML = "";
+      }
+    });
+  </script>
 </body>
 </html>
