@@ -417,7 +417,7 @@
                   target="_blank"
                   class="text-white hover:text-eoni-green"
                 >
-                  <i class="fab fa-whatsapp"></i>
+                  
                 </a>
               </div>
             </div>
@@ -468,7 +468,7 @@
                   target="_blank"
                   class="text-white hover:text-eoni-green"
                 >
-                  <i class="fab fa-whatsapp"></i>
+                  
                 </a>
               </div>
             </div>
@@ -519,7 +519,7 @@
                   target="_blank"
                   class="text-white hover:text-eoni-green"
                 >
-                  <i class="fab fa-whatsapp"></i>
+                  
                 </a>
               </div>
             </div>
@@ -570,7 +570,7 @@
                   target="_blank"
                   class="text-white hover:text-eoni-green"
                 >
-                  <i class="fab fa-whatsapp"></i>
+                  
                 </a>
               </div>
             </div>
@@ -621,7 +621,7 @@
                   target="_blank"
                   class="text-white hover:text-eoni-green"
                 >
-                  <i class="fab fa-whatsapp"></i>
+                  
                 </a>
               </div>
             </div>
@@ -672,7 +672,7 @@
                   target="_blank"
                   class="text-white hover:text-eoni-green"
                 >
-                  <i class="fab fa-whatsapp"></i>
+                  
                 </a>
               </div>
             </div>
@@ -1032,6 +1032,12 @@
     <div
       class="bg-white dark:bg-eoni-dark rounded-lg shadow-lg max-w-lg w-full relative p-6 z-50"
     >
+      <button
+        id="modalCloseBtn"
+        class="absolute top-4 right-4 text-gray-700 dark:text-gray-300 hover:text-eoni-green"
+      >
+        <i class="fas fa-times text-2xl"></i>
+      </button>
       <div id="modalContent">
         <!-- Isi detail produk akan muncul di sini -->
       </div>
@@ -1089,6 +1095,7 @@
     // Modal and product detail logic
     const modal = document.getElementById("productModal");
     const modalContent = document.getElementById("modalContent");
+    const modalCloseBtn = document.getElementById("modalCloseBtn");
     const modalOverlay = document.getElementById("modalOverlay");
 
     // Data produk (sesuaikan dengan produk yang ada)
@@ -1149,13 +1156,11 @@
       },
     ];
 
-    // Pasang event listener untuk tombol fa-eye (lihat detail)
+    // Pasang event listener untuk tombol fa-eye
     document.querySelectorAll(".fa-eye").forEach((eyeIcon, index) => {
       eyeIcon.closest("a").addEventListener("click", (e) => {
         e.preventDefault();
         const product = productsData[index];
-        const whatsappMessage = encodeURIComponent(`Halo, saya ingin bertanya tentang produk: ${product.title}`);
-
         modalContent.innerHTML = `
           <h3 class="text-2xl font-bold mb-2 text-eoni-green dark:text-white">${product.title}</h3>
           <img src="${product.image}" alt="${product.title}" class="w-full h-auto mb-4 rounded-lg"/>
@@ -1167,28 +1172,47 @@
               <span class="text-gray-600 dark:text-gray-400">${product.rating}</span>
             </div>
           </div>
-          <a href="https://wa.me/6281378233416?text=${whatsappMessage}" target="_blank" class="bg-eoni-green hover:bg-eoni-green/90 text-white px-4 py-2 rounded-lg inline-flex items-center space-x-2">
-            <i class="fab fa-whatsapp"></i><span>Tanyakan via WhatsApp</span>
-          </a>
+          <div class="flex space-x-4">
+            <a
+              href="https://wa.me/6281378233416?text=Halo,%20saya%20ingin%20bertanya%20tentang%20produk%20${encodeURIComponent(product.title)}"
+              target="_blank"
+              class="bg-eoni-green hover:bg-eoni-green/90 text-white px-4 py-2 rounded-lg flex items-center space-x-2"
+            >
+              <i class="fab fa-whatsapp"></i>
+              <span>WhatsApp</span>
+            </a>
+            <button
+              id="modalCloseInsideBtn"
+              class="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-lg"
+            >
+              Tutup
+            </button>
+          </div>
         `;
         modal.classList.remove("hidden");
         modal.classList.add("flex");
+
+        // Tambah event close modal dari tombol dalam modal
+        document
+          .getElementById("modalCloseInsideBtn")
+          .addEventListener("click", closeModal);
       });
     });
 
-    // Tutup modal saat klik overlay
-    modalOverlay.addEventListener("click", () => {
+    function closeModal() {
       modal.classList.add("hidden");
       modal.classList.remove("flex");
       modalContent.innerHTML = "";
-    });
+    }
+
+    // Close modal saat klik tombol close atau overlay
+    modalCloseBtn.addEventListener("click", closeModal);
+    modalOverlay.addEventListener("click", closeModal);
 
     // Close modal dengan ESC
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape" && !modal.classList.contains("hidden")) {
-        modal.classList.add("hidden");
-        modal.classList.remove("flex");
-        modalContent.innerHTML = "";
+        closeModal();
       }
     });
   </script>
