@@ -100,6 +100,12 @@
     .modal-overlay {
       background-color: rgba(0, 0, 0, 0.5);
     }
+
+    /* Modal container scroll */
+    #productModal > div.bg-white {
+      max-height: 90vh;
+      overflow-y: auto;
+    }
   </style>
 </head>
 <body
@@ -417,7 +423,7 @@
                   target="_blank"
                   class="text-white hover:text-eoni-green"
                 >
-                  
+                  <i class="fab fa-whatsapp"></i>
                 </a>
               </div>
             </div>
@@ -468,7 +474,7 @@
                   target="_blank"
                   class="text-white hover:text-eoni-green"
                 >
-                  
+                  <i class="fab fa-whatsapp"></i>
                 </a>
               </div>
             </div>
@@ -519,7 +525,7 @@
                   target="_blank"
                   class="text-white hover:text-eoni-green"
                 >
-                  
+                  <i class="fab fa-whatsapp"></i>
                 </a>
               </div>
             </div>
@@ -570,7 +576,7 @@
                   target="_blank"
                   class="text-white hover:text-eoni-green"
                 >
-                  
+                  <i class="fab fa-whatsapp"></i>
                 </a>
               </div>
             </div>
@@ -621,7 +627,7 @@
                   target="_blank"
                   class="text-white hover:text-eoni-green"
                 >
-                  
+                  <i class="fab fa-whatsapp"></i>
                 </a>
               </div>
             </div>
@@ -672,7 +678,7 @@
                   target="_blank"
                   class="text-white hover:text-eoni-green"
                 >
-                  
+                  <i class="fab fa-whatsapp"></i>
                 </a>
               </div>
             </div>
@@ -1031,16 +1037,24 @@
     ></div>
     <div
       class="bg-white dark:bg-eoni-dark rounded-lg shadow-lg max-w-lg w-full relative p-6 z-50"
+      style="max-height: 90vh; overflow-y: auto;"
     >
       <button
         id="modalCloseBtn"
-        class="absolute top-4 right-4 text-gray-700 dark:text-gray-300 hover:text-eoni-green"
+        class="absolute top-4 right-12 text-gray-700 dark:text-gray-300 hover:text-eoni-green"
+        title="Tutup"
       >
         <i class="fas fa-times text-2xl"></i>
       </button>
       <div id="modalContent">
         <!-- Isi detail produk akan muncul di sini -->
       </div>
+      <button
+        id="modalCloseInsideBtn"
+        class="bg-eoni-green hover:bg-eoni-green/90 text-white px-4 py-2 rounded-lg mt-6 float-right"
+      >
+        Tutup
+      </button>
     </div>
   </div>
 
@@ -1096,6 +1110,7 @@
     const modal = document.getElementById("productModal");
     const modalContent = document.getElementById("modalContent");
     const modalCloseBtn = document.getElementById("modalCloseBtn");
+    const modalCloseInsideBtn = document.getElementById("modalCloseInsideBtn");
     const modalOverlay = document.getElementById("modalOverlay");
 
     // Data produk (sesuaikan dengan produk yang ada)
@@ -1172,30 +1187,18 @@
               <span class="text-gray-600 dark:text-gray-400">${product.rating}</span>
             </div>
           </div>
-          <div class="flex space-x-4">
-            <a
-              href="https://wa.me/6281378233416?text=Halo,%20saya%20ingin%20bertanya%20tentang%20produk%20${encodeURIComponent(product.title)}"
-              target="_blank"
-              class="bg-eoni-green hover:bg-eoni-green/90 text-white px-4 py-2 rounded-lg flex items-center space-x-2"
-            >
-              <i class="fab fa-whatsapp"></i>
-              <span>WhatsApp</span>
-            </a>
-            <button
-              id="modalCloseInsideBtn"
-              class="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-lg"
-            >
-              Tutup
-            </button>
-          </div>
+          <a
+            href="https://wa.me/6281378233416?text=Halo,%20saya%20ingin%20bertanya%20tentang%20produk%20${encodeURIComponent(product.title)}"
+            target="_blank"
+            class="inline-flex items-center bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg transition"
+          >
+            <i class="fab fa-whatsapp mr-2"></i> Tanya via WhatsApp
+          </a>
         `;
         modal.classList.remove("hidden");
         modal.classList.add("flex");
-
-        // Tambah event close modal dari tombol dalam modal
-        document
-          .getElementById("modalCloseInsideBtn")
-          .addEventListener("click", closeModal);
+        // Scroll to top modal content each open
+        modal.querySelector("div.bg-white").scrollTop = 0;
       });
     });
 
@@ -1205,8 +1208,9 @@
       modalContent.innerHTML = "";
     }
 
-    // Close modal saat klik tombol close atau overlay
+    // Close modal saat klik tombol close, tombol tutup dalam modal, atau overlay
     modalCloseBtn.addEventListener("click", closeModal);
+    modalCloseInsideBtn.addEventListener("click", closeModal);
     modalOverlay.addEventListener("click", closeModal);
 
     // Close modal dengan ESC
