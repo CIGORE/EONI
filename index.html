@@ -8,7 +8,7 @@
   <link
     rel="icon"
     type="image/svg+xml"
-    href="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTAwIDEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSI0NSIgZmlsbD0iI2YzZjRmMCIgc3Ryb2tlPSIjMmQ2YTUzIiBzdHJva2Utd2lkdGg9IjgiLz48cGF0aCBkPSJNNTAsMjUgQzU1LDM1IDY1LDQwIDUwLDYwIEMzNSw0MCA0NSwzNSA1MCwyNVoiIGZpbGw9IiMyZDZhNTMiLz48cGF0aCBkPSJNNzAsNDUgQzYwLDU1IDY1LDcwIDcwLDc1IEM3NSw2NSA3NSw1NSA3MCw0NVoiIGZpbGw9IiMyZDZhNTMiLz48L3N2Zz4="
+    href="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTAwIDEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSI0NSIgZmlsbD0iI2YzZjRmMCIgc3Ryb2tlPSIjMmQ2YTUzIiBzdHJva2Utd2lkdGg9IjgiLz48cGF0aCBkPSJNNTAsMjUgQzU1LDM1IDY1LDQwIDUwLDYwIEMzNSw0MCA0NSwzNSA1MCwyNVoiIGZpbGw9IiMyZDZhNTMiLz48cGF0aCBkPSJNMzAsNDUgQzQwLDU1IDM1LDcwIDMwLDc1IEMyNSw2NSAyNSw1NSAzMCw0NVoiIGZpbGw9IiMyZDZhNTMiLz48cGF0aCBkPSJNNzAsNDUgQzYwLDU1IDY1LDcwIDcwLDc1IEM3NSw2NSA3NSw1NSA3MCw0NVoiIGZpbGw9IiMyZDZhNTMiLz48L3N2Zz4="
   />
   <link
     rel="stylesheet"
@@ -99,12 +99,6 @@
     /* Modal overlay */
     .modal-overlay {
       background-color: rgba(0, 0, 0, 0.5);
-    }
-
-    /* Modal container scroll */
-    #productModal > div.bg-white {
-      max-height: 90vh;
-      overflow-y: auto;
     }
   </style>
 </head>
@@ -1046,15 +1040,25 @@
       >
         <i class="fas fa-times text-2xl"></i>
       </button>
-      <div id="modalContent">
+      <div id="modalContent" class="mb-4">
         <!-- Isi detail produk akan muncul di sini -->
       </div>
-      <button
-        id="modalCloseInsideBtn"
-        class="bg-eoni-green hover:bg-eoni-green/90 text-white px-4 py-2 rounded-lg mt-6 float-right"
-      >
-        Tutup
-      </button>
+      <div class="flex justify-end space-x-3">
+        <a
+          href="#"
+          id="whatsappLink"
+          target="_blank"
+          class="inline-flex items-center bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg transition"
+        >
+          <i class="fab fa-whatsapp mr-2"></i> Tanya via WhatsApp
+        </a>
+        <button
+          id="modalCloseInsideBtn"
+          class="bg-eoni-green hover:bg-eoni-green/90 text-white px-4 py-2 rounded-lg"
+        >
+          Tutup
+        </button>
+      </div>
     </div>
   </div>
 
@@ -1110,8 +1114,9 @@
     const modal = document.getElementById("productModal");
     const modalContent = document.getElementById("modalContent");
     const modalCloseBtn = document.getElementById("modalCloseBtn");
-    const modalCloseInsideBtn = document.getElementById("modalCloseInsideBtn");
     const modalOverlay = document.getElementById("modalOverlay");
+    const modalCloseInsideBtn = document.getElementById("modalCloseInsideBtn");
+    const whatsappLink = document.getElementById("whatsappLink");
 
     // Data produk (sesuaikan dengan produk yang ada)
     const productsData = [
@@ -1187,17 +1192,12 @@
               <span class="text-gray-600 dark:text-gray-400">${product.rating}</span>
             </div>
           </div>
-          <a
-            href="https://wa.me/6281378233416?text=Halo,%20saya%20ingin%20bertanya%20tentang%20produk%20${encodeURIComponent(product.title)}"
-            target="_blank"
-            class="inline-flex items-center bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg transition"
-          >
-            <i class="fab fa-whatsapp mr-2"></i> Tanya via WhatsApp
-          </a>
         `;
+        // Update WhatsApp link with product title encoded
+        whatsappLink.href = `https://wa.me/6281378233416?text=Halo,%20saya%20ingin%20bertanya%20tentang%20produk%20${encodeURIComponent(product.title)}`;
         modal.classList.remove("hidden");
         modal.classList.add("flex");
-        // Scroll to top modal content each open
+        // Scroll modal content to top on open
         modal.querySelector("div.bg-white").scrollTop = 0;
       });
     });
@@ -1206,9 +1206,10 @@
       modal.classList.add("hidden");
       modal.classList.remove("flex");
       modalContent.innerHTML = "";
+      whatsappLink.href = "#";
     }
 
-    // Close modal saat klik tombol close, tombol tutup dalam modal, atau overlay
+    // Close modal saat klik tombol close atau overlay
     modalCloseBtn.addEventListener("click", closeModal);
     modalCloseInsideBtn.addEventListener("click", closeModal);
     modalOverlay.addEventListener("click", closeModal);
