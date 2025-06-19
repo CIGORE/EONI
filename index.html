@@ -59,6 +59,7 @@
   </script>
 </head>
 <body class="font-sans bg-eoni-cream dark:bg-eoni-dark text-gray-800 dark:text-gray-200 transition-colors duration-300">
+
 <div id="notifCopy">Link produk telah disalin!</div>
 
 <!-- Header/Navigation (tetap) -->
@@ -420,6 +421,10 @@
 <!-- Script Section -->
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 <script>
+ 
+  // AOS
+  AOS.init({ once:true, duration:900, easing:'ease' });
+
   // Data produk (array objek, kategori: Batik/Songket/Ikat/Hoodie/T-Shirt/Polo)
   const productsData = [
     {
