@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>EONI - Indonesian Cultural Clothing</title>
-
   <!-- SEO META & OG TAG -->
   <meta name="description" content="Brand fashion lokal dengan sentuhan budaya Indonesia. Premium, stylish, dan sustainable. Temukan koleksi EONI di sini!">
   <meta property="og:title" content="EONI - Indonesian Cultural Clothing">
@@ -12,16 +11,16 @@
   <meta property="og:image" content="https://cigore.github.io/eoni/katalog-4.png">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://eonimood.id/">
-
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTAwIDEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSI0NSIgZmlsbD0iI2YzZjRmMCIgc3Ryb2tlPSIjMmQ2YTUzIiBzdHJva2Utd2lkdGg9IjgiLz48cGF0aCBkPSJNNTAsMjUgQzU1LDM1IDY1LDQwIDUwLDYwIEMzNSw0MCA0NSwzNSA1MCwyNVoiIGZpbGw9IiMyZDZhNTMiLz48cGF0aCBkPSJNMzAsNDUgQzQwLDU1IDM1LDcwIDMwLDc1IEMyNSw2NSAyNSw1NSAzMCw0NVoiIGZpbGw9IiMyZDZhNTMiLz48cGF0aCBkPSJNNzAsNDUgQzYwLDU1IDY1LDcwIDcwLDc1IEM3NSw2NSA3NSw1NSA3MCw0NVoiIGZpbGw9IiMyZDZhNTMiLz48L3N2Zz4=">
+  <link rel="icon" type="image/png" href="https://cigore.github.io/eoni/eoni1.png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Animasi Scroll AOS -->
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css"/>
   <style>
-    @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+    @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@700&display=swap");
     html { scroll-behavior: smooth; }
-    .product-card:hover { box-shadow: 0 10px 32px rgba(43,100,82,0.13); transform: scale(1.025) rotate(-0.5deg); }
+    .product-card { transition: box-shadow .3s, transform .25s; }
+    .product-card:hover { box-shadow: 0 10px 32px rgba(43,100,82,0.17); transform: scale(1.025) rotate(-0.5deg); }
     .product-card:hover .product-actions { opacity: 1; }
     .scroll-to-top { opacity: 0; visibility: hidden; transition: all 0.3s ease; }
     .scroll-to-top.visible { opacity: 1; visibility: visible; }
@@ -32,6 +31,24 @@
     .modal-overlay { background-color: rgba(0, 0, 0, 0.5);}
     /* Notifikasi copy link */
     #notifCopy {position:fixed;top:30px;right:30px;z-index:9999;background:#2A6652;color:#fff;padding:12px 24px;border-radius:10px;display:none;font-weight:500;}
+    /* Ripple button */
+    .ripple { position:relative; overflow:hidden; }
+    .ripple span.ripple-anim {
+      position: absolute; border-radius: 100%;
+      transform: scale(0); animation: ripple .6s linear;
+      background: rgba(255,255,255,0.3);
+      pointer-events:none; z-index:2;
+    }
+    @keyframes ripple {
+      to { transform: scale(3); opacity: 0; }
+    }
+    /* Carousel testi */
+    .testi-fade { transition: opacity 0.6s; opacity:0;}
+    .testi-fade.active { opacity:1; z-index:10;}
+    /* Newsletter */
+    .newsletter-success { display:none; color: #2A6652; font-weight: 500; margin-top:10px;}
+    /* WhatsApp floating */
+    .wa-float { animation: fadeIn 1.1s; }
   </style>
   <script>
     tailwind.config = {
@@ -44,7 +61,7 @@
             "eoni-dark": "#1A1A1A",
             "eoni-light-dark": "#2A2A2A",
           },
-          fontFamily: { sans: ["Inter", "sans-serif"] },
+          fontFamily: { sans: ["Inter", "sans-serif"], serif:["Merriweather","serif"] },
         },
       },
     };
@@ -53,36 +70,44 @@
       document.documentElement.classList.add("dark");
     }
     window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (event) => {
-      if (event.matches) {document.documentElement.classList.add("dark");
-      } else { document.documentElement.classList.remove("dark");}
+      if (event.matches) {document.documentElement.classList.add("dark");}
+      else { document.documentElement.classList.remove("dark");}
     });
   </script>
 </head>
 <body class="font-sans bg-eoni-cream dark:bg-eoni-dark text-gray-800 dark:text-gray-200 transition-colors duration-300">
 
+<!-- PROMO BANNER -->
+<div class="w-full bg-eoni-green text-white text-center py-2 font-medium animate-fade-in" aria-label="promo">Gratis Ongkir untuk Pembelian di atas Rp 500.000 🚚</div>
+
 <div id="notifCopy">Link produk telah disalin!</div>
+
+<!-- WhatsApp Floating Button -->
+<a href="https://wa.me/6281378233416" target="_blank" class="fixed bottom-24 right-6 z-50 bg-green-500 rounded-full shadow-lg p-4 flex items-center hover:bg-green-600 transition-all wa-float" aria-label="Chat WhatsApp">
+  <i class="fab fa-whatsapp text-white text-2xl"></i>
+</a>
 
 <!-- Header/Navigation (tetap) -->
 <header class="sticky top-0 z-50 bg-eoni-cream/90 dark:bg-eoni-dark/90 backdrop-blur-md shadow-sm transition-all duration-300">
   <div class="container mx-auto px-4 py-3 flex justify-between items-center">
     <div class="flex items-center gap-2">
       <div class="w-20 h-20">
-        <img src="https://cigore.github.io/eoni/eoni-transp.png" alt="EONI Logo" class="w-full h-full rounded-lg"/>
+        <img src="https://cigore.github.io/eoni/eoni-transp.png" alt="EONI Logo" class="w-full h-full rounded-lg" loading="lazy"/>
       </div>
     </div>
-    <div class="hidden md:flex items-center space-x-6">
+    <nav class="hidden md:flex items-center space-x-6" aria-label="Navigasi utama">
       <a href="#home" class="text-gray-700 dark:text-gray-300 hover:text-eoni-green dark:hover:text-white font-medium">Beranda</a>
       <a href="#about" class="text-gray-700 dark:text-gray-300 hover:text-eoni-green dark:hover:text-white font-medium">Tentang</a>
       <a href="#products" class="text-gray-700 dark:text-gray-300 hover:text-eoni-green dark:hover:text-white font-medium">Produk</a>
       <a href="#testimoni" class="text-gray-700 dark:text-gray-300 hover:text-eoni-green dark:hover:text-white font-medium">Testimoni</a>
       <a href="#contact" class="text-gray-700 dark:text-gray-300 hover:text-eoni-green dark:hover:text-white font-medium">Kontak</a>
-    </div>
+    </nav>
     <div class="flex items-center gap-3">
-      <button id="darkModeToggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+      <button id="darkModeToggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors" aria-label="Toggle dark mode">
         <i class="fas fa-moon dark:hidden text-eoni-green"></i>
         <i class="fas fa-sun hidden dark:block text-yellow-400"></i>
       </button>
-      <button id="mobileMenuBtn" class="md:hidden p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+      <button id="mobileMenuBtn" class="md:hidden p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors" aria-label="Buka menu">
         <i class="fas fa-bars text-eoni-green dark:text-white"></i>
       </button>
     </div>
@@ -103,19 +128,19 @@
 <section id="home" class="relative overflow-hidden bg-eoni-cream dark:bg-eoni-dark py-16 md:py-24" data-aos="fade-up">
   <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
     <div class="md:w-1/2 mb-10 md:mb-0 animate-fade-in">
-      <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-eoni-green dark:text-white">EONI</h1>
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-eoni-green dark:text-white font-serif tracking-tight">EONI</h1>
       <h2 class="text-2xl md:text-3xl font-medium mb-6 text-gray-700 dark:text-gray-300">Budaya Indonesia dalam Mode Modern</h2>
       <p class="text-lg text-gray-600 dark:text-gray-400 mb-8 max-w-lg">
         Koleksi pakaian premium yang terinspirasi dari kekayaan budaya Indonesia, dirancang untuk generasi yang menghargai akar tradisi dengan sentuhan kontemporer.
       </p>
       <div class="flex space-x-4">
-        <a href="#products" class="bg-eoni-green hover:bg-eoni-green/90 text-white px-6 py-3 rounded-lg font-medium transition-all shadow-lg hover:shadow-xl">Lihat Koleksi</a>
-        <a href="#contact" class="border-2 border-eoni-green text-eoni-green dark:text-white hover:bg-eoni-green/10 px-6 py-3 rounded-lg font-medium transition-all">Hubungi Kami</a>
+        <a href="#products" class="bg-eoni-green hover:bg-eoni-green/90 text-white px-6 py-3 rounded-lg font-medium transition-all shadow-lg hover:shadow-xl ripple">Lihat Koleksi</a>
+        <a href="#contact" class="border-2 border-eoni-green text-eoni-green dark:text-white hover:bg-eoni-green/10 px-6 py-3 rounded-lg font-medium transition-all ripple">Hubungi Kami</a>
       </div>
     </div>
     <div class="md:w-1/2 flex justify-center animate-fade-in-delay-1">
       <div class="relative w-full max-w-md rounded-lg overflow-hidden shadow-xl">
-        <img src="https://cigore.github.io/eoni/katalog-4.png" alt="EONI Collection" class="w-full h-auto object-contain"/>
+        <img src="https://cigore.github.io/eoni/katalog-4.png" alt="EONI Collection" class="w-full h-auto object-contain" loading="lazy"/>
       </div>
     </div>
   </div>
@@ -127,7 +152,7 @@
 <section id="about" class="py-16 bg-white dark:bg-eoni-light-dark" data-aos="fade-up">
   <div class="container mx-auto px-4">
     <div class="text-center mb-12">
-      <h2 class="text-3xl md:text-4xl font-bold text-eoni-green dark:text-white mb-4">Tentang EONI</h2>
+      <h2 class="text-3xl md:text-4xl font-bold text-eoni-green dark:text-white mb-4 font-serif tracking-tight">Tentang EONI</h2>
       <div class="w-20 h-1 bg-eoni-green mx-auto mb-6"></div>
       <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
         Menggabungkan keindahan budaya lokal Indonesia dengan desain modern untuk menciptakan pakaian yang tidak hanya stylish tetapi juga bermakna.
@@ -170,7 +195,7 @@
           </div>
         </div>
         <div class="md:w-2/5">
-          <h3 class="text-2xl font-bold mb-4 text-eoni-green dark:text-white">Cerita Kami</h3>
+          <h3 class="text-2xl font-bold mb-4 text-eoni-green dark:text-white font-serif tracking-tight">Cerita Kami</h3>
           <p class="text-gray-600 dark:text-gray-400 mb-4">
             EONI lahir dari kecintaan terhadap keberagaman budaya Indonesia yang kaya. Kami percaya bahwa warisan budaya Indonesia memiliki nilai estetika yang tinggi dan cerita yang mendalam, yang layak untuk diangkat ke dalam desain modern.
           </p>
@@ -178,7 +203,7 @@
             Setiap koleksi kami mewakili kekayaan motif, warna, dan filosofi dari berbagai daerah di Indonesia. Dengan sentuhan desain kontemporer, kami menciptakan pakaian yang tidak hanya stylish tetapi juga menjadi media untuk menceritakan keindahan budaya Indonesia.
           </p>
           <div class="flex space-x-4 mt-6">
-            <a href="#products" class="bg-eoni-green hover:bg-eoni-green/90 text-white px-5 py-2 rounded-lg font-medium transition-all">Produk Kami</a>
+            <a href="#products" class="bg-eoni-green hover:bg-eoni-green/90 text-white px-5 py-2 rounded-lg font-medium transition-all ripple">Produk Kami</a>
           </div>
         </div>
       </div>
@@ -190,7 +215,7 @@
 <section id="products" class="py-16 bg-eoni-cream dark:bg-eoni-dark" data-aos="fade-up">
   <div class="container mx-auto px-4">
     <div class="text-center mb-12">
-      <h2 class="text-3xl md:text-4xl font-bold text-eoni-green dark:text-white mb-4">Koleksi Kami</h2>
+      <h2 class="text-3xl md:text-4xl font-bold text-eoni-green dark:text-white mb-4 font-serif tracking-tight">Koleksi Kami</h2>
       <div class="w-20 h-1 bg-eoni-green mx-auto mb-6"></div>
       <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
         Jelajahi koleksi pakaian kami yang terinspirasi dari berbagai budaya Indonesia. Desain eksklusif dengan kualitas premium.
@@ -199,45 +224,27 @@
 
     <!-- Filter & Search -->
     <div class="flex flex-col sm:flex-row justify-between items-center mb-8 gap-4">
-      <input id="searchInput" type="text" placeholder="Cari produk..." class="px-4 py-2 rounded-lg border w-full sm:w-64"/>
-      <select id="categoryFilter" class="px-4 py-2 rounded-lg border w-full sm:w-52">
-        <option value="">Semua Kategori</option>
-        <option value="Batik">Batik Modern</option>
-        <option value="Songket">Songket Heritage</option>
-        <option value="Ikat">Tenun Ikat</option>
-        <option value="Hoodie">Hoodie</option>
-        <option value="T-Shirt">T-Shirt</option>
-        <option value="Polo">Polo</option>
-      </select>
+      <input id="searchInput" type="text" placeholder="Cari produk..." class="px-4 py-2 rounded-lg border w-full sm:w-64" aria-label="Cari produk"/>
+      <select id="categoryFilter" class="px-4 py-2 rounded-lg border w-full sm:w-52" aria-label="Filter kategori"></select>
     </div>
-
     <div id="productsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"></div>
-
     <div class="text-center mt-12">
-      <a href="#contact" class="inline-block bg-eoni-green hover:bg-eoni-green/90 text-white px-8 py-3 rounded-lg font-medium transition-all shadow-lg hover:shadow-xl">Hubungi Kami untuk Pesanan</a>
+      <a href="#contact" class="inline-block bg-eoni-green hover:bg-eoni-green/90 text-white px-8 py-3 rounded-lg font-medium transition-all shadow-lg hover:shadow-xl ripple">Hubungi Kami untuk Pesanan</a>
     </div>
   </div>
 </section>
 
-<!-- Testimoni Section -->
+<!-- Testimoni Section (Carousel) -->
 <section id="testimoni" class="py-16 bg-eoni-cream dark:bg-eoni-dark" data-aos="fade-up">
   <div class="container mx-auto px-4">
-    <h2 class="text-3xl font-bold text-center text-eoni-green dark:text-white mb-8">Apa Kata Mereka?</h2>
-    <div class="grid md:grid-cols-3 gap-8">
-      <div class="bg-white dark:bg-eoni-light-dark rounded-xl p-6 shadow-md flex flex-col items-center" data-aos="fade-up">
-        <img src="https://randomuser.me/api/portraits/men/32.jpg" class="w-16 h-16 rounded-full mb-4" alt="Testimoni 1"/>
-        <p class="italic text-gray-700 dark:text-gray-300 mb-2">"Bahan premium dan motifnya Indonesia banget, suka!"</p>
-        <span class="font-semibold text-eoni-green dark:text-white">Andi, Jakarta</span>
+    <h2 class="text-3xl font-bold text-center text-eoni-green dark:text-white mb-8 font-serif tracking-tight">Apa Kata Mereka?</h2>
+    <div class="relative max-w-2xl mx-auto">
+      <div id="testiCarousel" class="flex flex-col items-center relative">
+        <!-- Testi item diisi via JS -->
       </div>
-      <div class="bg-white dark:bg-eoni-light-dark rounded-xl p-6 shadow-md flex flex-col items-center" data-aos="fade-up" data-aos-delay="100">
-        <img src="https://randomuser.me/api/portraits/women/44.jpg" class="w-16 h-16 rounded-full mb-4" alt="Testimoni 2"/>
-        <p class="italic text-gray-700 dark:text-gray-300 mb-2">"Koleksinya unik dan cocok buat daily outfit!"</p>
-        <span class="font-semibold text-eoni-green dark:text-white">Sinta, Surabaya</span>
-      </div>
-      <div class="bg-white dark:bg-eoni-light-dark rounded-xl p-6 shadow-md flex flex-col items-center" data-aos="fade-up" data-aos-delay="200">
-        <img src="https://randomuser.me/api/portraits/men/65.jpg" class="w-16 h-16 rounded-full mb-4" alt="Testimoni 3"/>
-        <p class="italic text-gray-700 dark:text-gray-300 mb-2">"Bangga pakai produk lokal yang stylish."</p>
-        <span class="font-semibold text-eoni-green dark:text-white">Dewangga, Bali</span>
+      <div class="flex justify-center gap-2 mt-4">
+        <button class="bg-eoni-green text-white rounded-full w-8 h-8 flex items-center justify-center ripple" id="testiPrev" aria-label="Testimoni sebelumnya"><i class="fas fa-chevron-left"></i></button>
+        <button class="bg-eoni-green text-white rounded-full w-8 h-8 flex items-center justify-center ripple" id="testiNext" aria-label="Testimoni berikutnya"><i class="fas fa-chevron-right"></i></button>
       </div>
     </div>
   </div>
@@ -247,7 +254,7 @@
 <section id="contact" class="py-16 bg-white dark:bg-eoni-light-dark" data-aos="fade-up">
   <div class="container mx-auto px-4">
     <div class="text-center mb-12">
-      <h2 class="text-3xl md:text-4xl font-bold text-eoni-green dark:text-white mb-4">Hubungi Kami</h2>
+      <h2 class="text-3xl md:text-4xl font-bold text-eoni-green dark:text-white mb-4 font-serif tracking-tight">Hubungi Kami</h2>
       <div class="w-20 h-1 bg-eoni-green mx-auto mb-6"></div>
       <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
         Tertarik dengan produk kami? Hubungi kami melalui platform berikut untuk informasi lebih lanjut atau pemesanan.
@@ -292,18 +299,19 @@
       <!-- Form Kontak langsung (via Formspree) -->
       <div class="bg-eoni-cream dark:bg-eoni-dark rounded-xl p-6 shadow-md hover:shadow-lg transition-all">
         <h3 class="text-xl font-semibold mb-6 text-eoni-green dark:text-white">Kontak Langsung</h3>
-        <form action="https://formspree.io/f/mayrgqvy" method="POST" class="space-y-4">
+        <form action="https://formspree.io/f/mayrgqvy" method="POST" class="space-y-4" id="contactForm">
           <input type="text" name="name" placeholder="Nama" required class="w-full px-4 py-2 rounded-lg border"/>
           <input type="email" name="email" placeholder="Email" required class="w-full px-4 py-2 rounded-lg border"/>
           <textarea name="message" rows="4" placeholder="Pesan" required class="w-full px-4 py-2 rounded-lg border"></textarea>
-          <button type="submit" class="bg-eoni-green hover:bg-eoni-green/90 text-white px-6 py-2 rounded-lg w-full">Kirim</button>
+          <button type="submit" class="bg-eoni-green hover:bg-eoni-green/90 text-white px-6 py-2 rounded-lg w-full ripple">Kirim</button>
         </form>
+        <div id="formSuccess" class="newsletter-success text-center">Terima kasih! Pesan Anda sudah terkirim.</div>
         <p class="text-xs text-gray-500 mt-3">Atau chat kami di WhatsApp untuk respon tercepat.</p>
       </div>
     </div>
     <!-- Sosmed -->
     <div class="max-w-2xl mx-auto mt-12 grid grid-cols-1 sm:grid-cols-3 gap-6">
-      <a href="https://instagram.com/eonimood.id" target="_blank" class="flex items-center p-4 bg-white dark:bg-eoni-light-dark rounded-lg hover:shadow-md transition-all">
+      <a href="https://instagram.com/eonimood.id" target="_blank" class="flex items-center p-4 bg-white dark:bg-eoni-light-dark rounded-lg hover:shadow-md transition-all" aria-label="Instagram EONI">
         <div class="w-12 h-12 bg-pink-500/20 rounded-full flex items-center justify-center mr-4">
           <i class="fab fa-instagram text-pink-500 text-2xl"></i>
         </div>
@@ -312,7 +320,7 @@
           <p class="text-sm text-gray-500 dark:text-gray-400">@eonimood.id</p>
         </div>
       </a>
-      <a href="https://tiktok.com/@eonimood" target="_blank" class="flex items-center p-4 bg-white dark:bg-eoni-light-dark rounded-lg hover:shadow-md transition-all">
+      <a href="https://tiktok.com/@eonimood" target="_blank" class="flex items-center p-4 bg-white dark:bg-eoni-light-dark rounded-lg hover:shadow-md transition-all" aria-label="Tiktok EONI">
         <div class="w-12 h-12 bg-black/20 rounded-full flex items-center justify-center mr-4">
           <i class="fab fa-tiktok text-black dark:text-white text-2xl"></i>
         </div>
@@ -321,7 +329,7 @@
           <p class="text-sm text-gray-500 dark:text-gray-400">@eonimood.id</p>
         </div>
       </a>
-      <a href="mailto:eonimood.id@gmail.com" class="flex items-center p-4 bg-white dark:bg-eoni-light-dark rounded-lg hover:shadow-md transition-all">
+      <a href="mailto:eonimood.id@gmail.com" class="flex items-center p-4 bg-white dark:bg-eoni-light-dark rounded-lg hover:shadow-md transition-all" aria-label="Email EONI">
         <div class="w-12 h-12 bg-blue-500/20 rounded-full flex items-center justify-center mr-4">
           <i class="fas fa-envelope text-blue-500 text-2xl"></i>
         </div>
@@ -341,14 +349,14 @@
       <div class="col-span-1 md:col-span-1">
         <div class="flex items-center gap-2 mb-4">
           <div class="w-16 h-16">
-            <img src="https://cigore.github.io/eoni/eoni.png" alt="EONI Logo" class="w-full h-full rounded-lg"/>
+            <img src="https://cigore.github.io/eoni/eoni.png" alt="EONI Logo" class="w-full h-full rounded-lg" loading="lazy"/>
           </div>
         </div>
         <p class="text-gray-300 mb-6">Elegance of Natural Indonesia</p>
         <div class="flex space-x-4">
-          <a href="https://instagram.com/eonimood.id" target="_blank" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors"><i class="fab fa-instagram"></i></a>
-          <a href="https://tiktok.com/@eonimood.id" target="_blank" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors"><i class="fab fa-tiktok"></i></a>
-          <a href="https://wa.me/6281378233416?text=Halo,%20saya%20ingin%20bertanya%20tentang%20produk%20yang%20Anda%20jual" target="_blank" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors"><i class="fab fa-whatsapp"></i></a>
+          <a href="https://instagram.com/eonimood.id" target="_blank" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors" aria-label="Instagram EONI"><i class="fab fa-instagram"></i></a>
+          <a href="https://tiktok.com/@eonimood.id" target="_blank" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors" aria-label="Tiktok EONI"><i class="fab fa-tiktok"></i></a>
+          <a href="https://wa.me/6281378233416?text=Halo,%20saya%20ingin%20bertanya%20tentang%20produk%20yang%20Anda%20jual" target="_blank" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors" aria-label="WhatsApp EONI"><i class="fab fa-whatsapp"></i></a>
         </div>
       </div>
       <div>
@@ -363,12 +371,7 @@
       </div>
       <div>
         <h3 class="text-lg font-semibold mb-4">Kategori</h3>
-        <ul class="space-y-2">
-          <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Batik Modern</a></li>
-          <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Songket Heritage</a></li>
-          <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Tenun Ikat</a></li>
-          <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Koleksi Terbaru</a></li>
-        </ul>
+        <ul class="space-y-2" id="footerKategori"></ul>
       </div>
       <div>
         <h3 class="text-lg font-semibold mb-4">Kontak</h3>
@@ -380,7 +383,13 @@
         <div class="mt-6">
           <h4 class="text-sm font-medium mb-2">Ikuti Update Terbaru</h4>
           <p class="text-xs text-gray-300 mb-3">Dapatkan info koleksi terbaru via WhatsApp</p>
-          <a href="https://wa.me/6281378233416?text=Halo,%20saya%20ingin%20mengikuti%20update%20koleksi%20terbaru%20EONI" target="_blank" class="inline-flex items-center px-3 py-2 bg-white/10 hover:bg-white/20 rounded-lg text-sm transition-colors"><i class="fab fa-whatsapp mr-2"></i> Subscribe</a>
+          <a href="https://wa.me/6281378233416?text=Halo,%20saya%20ingin%20mengikuti%20update%20koleksi%20terbaru%20EONI" target="_blank" class="inline-flex items-center px-3 py-2 bg-white/10 hover:bg-white/20 rounded-lg text-sm transition-colors ripple"><i class="fab fa-whatsapp mr-2"></i> Subscribe</a>
+          <!-- Newsletter Subscribe -->
+          <form action="https://formspree.io/f/xleqvkvj" method="POST" class="flex flex-col mt-2 gap-2" id="newsletterForm">
+            <input type="email" name="email" required placeholder="Email Anda" class="rounded px-2 py-1 text-sm text-eoni-dark"/>
+            <button type="submit" class="bg-white/10 hover:bg-white/20 text-white px-3 py-1 rounded ripple text-sm">Langganan</button>
+            <div class="newsletter-success text-white text-xs text-center" id="newsletterMsg">Berhasil berlangganan!</div>
+          </form>
         </div>
       </div>
     </div>
@@ -394,7 +403,7 @@
 </footer>
 
 <!-- Scroll to top button -->
-<button id="scrollTopBtn" class="scroll-to-top fixed bottom-6 right-6 bg-eoni-green text-white w-12 h-12 rounded-full shadow-lg flex items-center justify-center hover:bg-eoni-green/90 transition-all z-40">
+<button id="scrollTopBtn" class="scroll-to-top fixed bottom-6 right-6 bg-eoni-green text-white w-12 h-12 rounded-full shadow-lg flex items-center justify-center hover:bg-eoni-green/90 transition-all z-40" aria-label="Kembali ke atas">
   <i class="fas fa-arrow-up"></i>
 </button>
 
@@ -402,18 +411,18 @@
 <div id="productModal" class="fixed inset-0 hidden items-center justify-center z-50">
   <div class="modal-overlay absolute inset-0 bg-black opacity-50" id="modalOverlay"></div>
   <div class="bg-white dark:bg-eoni-dark rounded-lg shadow-lg max-w-lg w-full relative p-6 z-50" style="max-height: 90vh; overflow-y: auto;">
-    <button id="modalCloseBtn" class="absolute top-4 right-12 text-gray-700 dark:text-gray-300 hover:text-eoni-green" title="Tutup">
+    <button id="modalCloseBtn" class="absolute top-4 right-12 text-gray-700 dark:text-gray-300 hover:text-eoni-green" title="Tutup" aria-label="Tutup modal">
       <i class="fas fa-times text-2xl"></i>
     </button>
     <div id="modalContent" class="mb-4"></div>
     <div class="flex flex-wrap justify-end space-x-3">
-      <button id="shareProductBtn" class="inline-flex items-center bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg mb-2 md:mb-0">
+      <button id="shareProductBtn" class="inline-flex items-center bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg mb-2 md:mb-0 ripple">
         <i class="fas fa-share-alt mr-2"></i> Share Produk
       </button>
-      <a href="#" id="whatsappLink" target="_blank" class="inline-flex items-center bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg transition mb-2 md:mb-0">
+      <a href="#" id="whatsappLink" target="_blank" class="inline-flex items-center bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg transition mb-2 md:mb-0 ripple">
         <i class="fab fa-whatsapp mr-2"></i> Tanya via WhatsApp
       </a>
-      <button id="modalCloseInsideBtn" class="bg-eoni-green hover:bg-eoni-green/90 text-white px-4 py-2 rounded-lg">Tutup</button>
+      <button id="modalCloseInsideBtn" class="bg-eoni-green hover:bg-eoni-green/90 text-white px-4 py-2 rounded-lg ripple">Tutup</button>
     </div>
   </div>
 </div>
@@ -421,11 +430,10 @@
 <!-- Script Section -->
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 <script>
- 
   // AOS
   AOS.init({ once:true, duration:900, easing:'ease' });
 
-  // Data produk (array objek, kategori: Batik/Songket/Ikat/Hoodie/T-Shirt/Polo)
+  // Data produk
   const productsData = [
     {
       title: "Batik Contempo Tee",
@@ -483,6 +491,31 @@
     },
   ];
 
+  // Generate kategori unik untuk filter dan footer
+  function getUniqueCategories() {
+    const catSet = new Set();
+    productsData.forEach(p=>catSet.add(p.category));
+    return Array.from(catSet);
+  }
+
+  // Populate kategori di filter dan footer
+  function populateCategoryFilter() {
+    const select = document.getElementById('categoryFilter');
+    select.innerHTML = `<option value="">Semua Kategori</option>`;
+    getUniqueCategories().forEach(cat=>{
+      select.innerHTML += `<option value="${cat}">${cat}</option>`;
+    });
+  }
+  function populateFooterKategori() {
+    const ul = document.getElementById('footerKategori');
+    ul.innerHTML = "";
+    getUniqueCategories().forEach(cat=>{
+      ul.innerHTML += `<li><a href="#products" class="text-gray-300 hover:text-white transition-colors">${cat}</a></li>`;
+    });
+  }
+  populateCategoryFilter();
+  populateFooterKategori();
+
   // Render produk (support filter & search)
   function renderProducts(products) {
     const grid = document.getElementById('productsGrid');
@@ -499,13 +532,15 @@
           <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300"></div>
           <div class="product-actions absolute bottom-0 left-0 right-0 bg-black/60 p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
             <div class="flex justify-center space-x-4">
-              <a href="#" class="text-eoni-green hover:text-white" title="Lihat Detail">
+              <a href="#" class="text-eoni-green hover:text-white" title="Lihat Detail" aria-label="Lihat detail produk">
                 <i class="fas fa-eye"></i>
               </a>
-              <a href="#contact" class="text-white hover:text-eoni-green" title="Pesan via Form">
+              <a href="#contact" class="text-white hover:text-eoni-green" title="Pesan via Form" aria-label="Pesan via Form">
                 <i class="fas fa-shopping-bag"></i>
               </a>
-              <a href="https://wa.me/6281378233416?text=Halo,%20saya%20ingin%20bertanya%20tentang%20produk%20${encodeURIComponent(product.title)}" target="_blank" class="text-white hover:text-eoni-green" title="Chat WhatsApp"></a>
+              <a href="https://wa.me/6281378233416?text=Halo,%20saya%20ingin%20bertanya%20tentang%20produk%20${encodeURIComponent(product.title)}" target="_blank" class="text-white hover:text-eoni-green" title="Chat WhatsApp" aria-label="Chat WhatsApp">
+                <i class="fab fa-whatsapp"></i>
+              </a>
             </div>
           </div>
         </div>
@@ -535,18 +570,16 @@
   // Filter & Search
   function filterProducts() {
     const keyword = (document.getElementById('searchInput').value||"").toLowerCase();
-    const category = (document.getElementById('categoryFilter').value||"").toLowerCase();
+    const category = (document.getElementById('categoryFilter').value||"");
     renderProducts(productsData.filter(p=>{
       let vis=true;
       if(keyword && !p.title.toLowerCase().includes(keyword) && !p.description.toLowerCase().includes(keyword) && !p.details.toLowerCase().includes(keyword)) vis=false;
-      if(category && !p.category.toLowerCase().includes(category)) vis=false;
+      if(category && p.category!==category && category!=="") vis=false;
       return vis;
     }));
   }
   document.getElementById('searchInput').oninput = filterProducts;
   document.getElementById('categoryFilter').onchange = filterProducts;
-
-  // Pertama kali render produk
   renderProducts(productsData);
 
   // Modal Produk
@@ -561,8 +594,8 @@
   function showProductModal(product){
     modalProduct = product;
     modalContent.innerHTML = `
-      <h3 class="text-2xl font-bold mb-2 text-eoni-green dark:text-white">${product.title}</h3>
-      <img src="${product.image}" alt="${product.title}" class="w-full h-auto mb-4 rounded-lg"/>
+      <h3 class="text-2xl font-bold mb-2 text-eoni-green dark:text-white font-serif">${product.title}</h3>
+      <img src="${product.image}" alt="${product.title}" class="w-full h-auto mb-4 rounded-lg" loading="lazy"/>
       <p class="text-gray-700 dark:text-gray-300 mb-4">${product.details}</p>
       <div class="flex justify-between items-center mb-4">
         <span class="text-eoni-green font-bold text-lg">${product.price}</span>
@@ -584,7 +617,6 @@
     modalContent.innerHTML = "";
     whatsappLink.href = "#";
   }
-  // Modal event
   modalCloseBtn.onclick = closeModal;
   modalCloseInsideBtn.onclick = closeModal;
   modalOverlay.onclick = closeModal;
@@ -614,7 +646,6 @@
       mobileMenu.classList.remove("hidden"); mobileMenu.classList.add("block");
     } else { mobileMenu.classList.add("hidden"); mobileMenu.classList.remove("block"); }
   });
-  // Close mobile menu on link click
   document.querySelectorAll("#mobileMenu a").forEach(link => {
     link.addEventListener("click", () => {
       mobileMenu.classList.add("hidden"); mobileMenu.classList.remove("block");
@@ -633,6 +664,104 @@
     else scrollTopBtn.classList.remove("visible");
   });
   scrollTopBtn.onclick = ()=>window.scrollTo({top:0,behavior:"smooth"});
+
+  // Button Ripple effect
+  document.addEventListener('click',function(e){
+    const btn = e.target.closest('.ripple');
+    if(!btn) return;
+    let ripple = document.createElement('span');
+    ripple.className='ripple-anim';
+    let rect = btn.getBoundingClientRect();
+    let size = Math.max(rect.width,rect.height);
+    ripple.style.width = ripple.style.height = size+'px';
+    ripple.style.left = (e.clientX-rect.left-size/2)+'px';
+    ripple.style.top = (e.clientY-rect.top-size/2)+'px';
+    btn.appendChild(ripple);
+    setTimeout(()=>{ripple.remove();},600);
+  },false);
+
+  // Newsletter Form (success feedback)
+  document.getElementById('newsletterForm').onsubmit = function(e){
+    e.preventDefault();
+    document.getElementById('newsletterMsg').style.display="block";
+    setTimeout(()=>{document.getElementById('newsletterMsg').style.display="none";},2000);
+    this.reset();
+    // Sebenarnya formspree tetap submit, hapus saja jika mau full tanpa reload.
+    return false;
+  }
+
+  // Contact Form Success feedback
+  document.getElementById('contactForm').onsubmit = function(e){
+    e.preventDefault();
+    fetch(this.action,{method:"POST",body:new FormData(this),headers:{'Accept':'application/json'}}).then(resp=>resp.json()).then(()=>{
+      document.getElementById('formSuccess').style.display="block";
+      this.reset();
+      setTimeout(()=>{document.getElementById('formSuccess').style.display="none";},2000);
+    }).catch(()=>{});
+    return false;
+  }
+
+  // Testimoni Carousel
+  const testimoniData = [
+    {
+      name: "Andi, Jakarta",
+      text: "Bahan premium dan motifnya Indonesia banget, suka!",
+      img: "https://randomuser.me/api/portraits/men/32.jpg",
+      rating: 5
+    },
+    {
+      name: "Sinta, Surabaya",
+      text: "Koleksinya unik dan cocok buat daily outfit!",
+      img: "https://randomuser.me/api/portraits/women/44.jpg",
+      rating: 5
+    },
+    {
+      name: "Dewangga, Bali",
+      text: "Bangga pakai produk lokal yang stylish.",
+      img: "https://randomuser.me/api/portraits/men/65.jpg",
+      rating: 4
+    },
+    {
+      name: "Citra, Bandung",
+      text: "Fast respon, packing rapi, produk nyaman banget.",
+      img: "https://randomuser.me/api/portraits/women/68.jpg",
+      rating: 5
+    },
+    {
+      name: "Fajar, Yogyakarta",
+      text: "Design motifnya keren, pelayanan ramah.",
+      img: "https://randomuser.me/api/portraits/men/78.jpg",
+      rating: 5
+    },
+  ];
+  function renderTestiCarousel(active=0) {
+    const el = document.getElementById('testiCarousel');
+    el.innerHTML = testimoniData.map((t,i)=>`
+      <div class="testi-fade absolute left-0 right-0 ${i===active?'active':''}" style="opacity:${i===active?1:0};">
+        <div class="bg-white dark:bg-eoni-light-dark rounded-xl p-6 shadow-md flex flex-col items-center" style="min-width:250px;min-height:220px;">
+          <img src="${t.img}" class="w-16 h-16 rounded-full mb-4" alt="Testimoni ${t.name}" loading="lazy"/>
+          <div class="flex mb-1">
+            ${'<i class="fas fa-star text-yellow-400 mr-1"></i>'.repeat(t.rating)}${'<i class="fas fa-star text-gray-300 dark:text-gray-700 mr-1"></i>'.repeat(5-t.rating)}
+          </div>
+          <p class="italic text-gray-700 dark:text-gray-300 mb-2">"${t.text}"</p>
+          <span class="font-semibold text-eoni-green dark:text-white">${t.name}</span>
+        </div>
+      </div>
+    `).join('');
+    // centering
+    el.style.minHeight = '260px';
+  }
+  let testiIdx = 0, testiInterval = null;
+  function showTesti(idx){
+    const len = testimoniData.length;
+    testiIdx = (idx+len)%len;
+    renderTestiCarousel(testiIdx);
+  }
+  document.getElementById('testiPrev').onclick = ()=>{ showTesti(testiIdx-1); resetTestiAuto(); };
+  document.getElementById('testiNext').onclick = ()=>{ showTesti(testiIdx+1); resetTestiAuto(); };
+  function autoTesti(){ testiInterval = setInterval(()=>showTesti(testiIdx+1), 3900); }
+  function resetTestiAuto(){ clearInterval(testiInterval); autoTesti(); }
+  renderTestiCarousel(0); autoTesti();
 
 </script>
 </body>
