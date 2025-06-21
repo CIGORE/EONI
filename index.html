@@ -388,7 +388,9 @@
           <form action="https://formspree.io/f/xanjddag" method="POST" class="flex flex-col mt-2 gap-2" id="newsletterForm">
             <input type="email" name="email" required placeholder="Email Anda" class="rounded px-2 py-1 text-sm text-eoni-dark"/>
             <button type="submit" class="bg-white/10 hover:bg-white/20 text-white px-3 py-1 rounded ripple text-sm">Langganan</button>
-            <div class="newsletter-success text-white text-xs text-center" id="newsletterMsg">Berhasil berlangganan!</div>
+            <div class="newsletter-success text-white text-xs text-center" id="newsletterMsg" style="display: none;">
+              Berhasil berlangganan!
+            </div>
           </form>
         </div>
       </div>
@@ -430,6 +432,28 @@
 <!-- Script Section -->
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 <script>
+   const form = document.getElementById('newsletterForm');
+    const msg = document.getElementById('newsletterMsg');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const formData = new FormData(form);
+    
+    const response = await fetch(form.action, {
+      method: form.method,
+      body: formData,
+      headers: {
+        'Accept': 'application/json'
+      }
+    });
+
+    if (response.ok) {
+      msg.style.display = 'block';
+      form.reset();
+    } else {
+      alert('Terjadi kesalahan. Coba lagi nanti.');
+    }
+  });
   // AOS
   AOS.init({ once:true, duration:900, easing:'ease' });
 
